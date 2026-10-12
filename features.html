@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      CodeBound: An Educational Video Game for Learning Fundamentals of
+      Programming
+    </title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/features.css" />
+
+    <link rel="icon" type="image/png" href="images/favicon1.png" />
+  </head>
+
+  <body class="features-page">
+    <!-- =========================
+         TOP NAVIGATION
+    ========================= -->
+
+    <header class="site-header">
+      <nav class="top-nav">
+        <div class="nav-container">
+          <a class="logo" href="home.html">
+            <img src="images/logo.png" alt="CodeBound Logo" />
+          </a>
+
+          <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="features.html">FEATURES</a>
+            <a href="topics.html">TOPICS</a>
+            <a href="contact.html">CONTACT</a>
+          </div>
+
+          <a class="play-btn" href="playgame.html"> PLAY GAME </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="features" class="features-section">
+        <div class="features-intro">
+          <div class="features-title">
+            <h1>FEATURES</h1>
+            <div class="features-line"></div>
+          </div>
+        </div>
+
+        <div class="features-list">
+          <!-- FEATURE 1 -->
+          <article class="feature-item">
+            <h2><span>1.</span> CODING-BASED PUZZLE SOLVING</h2>
+            <p>
+              Solve puzzles by applying programming logic and fundamental coding
+              concepts throughout the game.
+            </p>
+            <img
+              src="images/placeholder.jpg"
+              alt="Coding-based puzzle solving in CodeBound"
+            />
+          </article>
+
+          <!-- FEATURE 2 -->
+          <article class="feature-item">
+            <h2><span>2.</span> PROCEDURALLY GENERATED PUZZLES</h2>
+            <p>
+              Experience varied puzzle challenges that keep gameplay engaging as
+              you progress.
+            </p>
+            <img
+              src="images/placeholder.jpg"
+              alt="Procedurally generated puzzles in CodeBound"
+            />
+          </article>
+
+          <!-- FEATURE 3 -->
+          <article class="feature-item">
+            <h2><span>3.</span> BOSS FIGHTS</h2>
+            <p>
+              Test your programming knowledge and problem-solving skills through
+              challenging boss encounters.
+            </p>
+            <img src="images/placeholder.jpg" alt="Boss fights in CodeBound" />
+          </article>
+
+          <!-- FEATURE 4 -->
+          <article class="feature-item">
+            <h2><span>4.</span> IN-GAME CODE EDITOR</h2>
+            <p>
+              Write and test code directly in the game while learning essential
+              programming fundamentals.
+            </p>
+            <img src="images/placeholder.jpg" alt="Code editor in CodeBound" />
+          </article>
+
+          <!-- FEATURE 5 -->
+          <article class="feature-item">
+            <h2><span>5.</span> CAT GUIDE COMPANION</h2>
+            <p>
+              Meet a helpful cat companion that provides hints and guidance
+              whenever you need help solving puzzles and programming challenges.
+            </p>
+            <img
+              src="images/placeholder.jpg"
+              alt="Cat guide companion providing hints in CodeBound"
+            />
+          </article>
+
+          <!-- FEATURE 6 -->
+          <article class="feature-item">
+            <h2><span>6.</span> BEGINNER-FRIENDLY INTERFACE</h2>
+            <p>
+              Navigate a simple and accessible interface designed to help
+              beginners understand the game and focus on learning programming.
+            </p>
+            <img
+              src="images/placeholder.jpg"
+              alt="Beginner-friendly CodeBound game interface"
+            />
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026-2027 CodeBound Development Team.</p>
+    </footer>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector(".top-nav");
+
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>

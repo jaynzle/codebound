@@ -1,0 +1,836 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #000000;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #000000;
+    color: #74b553;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 16px;
+    font-weight: 400;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    overflow-x: hidden;
+}
+
+
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 220px;
+    background: linear-gradient(to bottom,
+            #000000 0%,
+            #000000 35%,
+            rgba(0, 0, 0, 0.95) 50%,
+            rgba(0, 0, 0, 0.65) 68%,
+            rgba(0, 0, 0, 0) 100%);
+    z-index: 9;
+    pointer-events: none;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    z-index: 10;
+}
+
+.top-nav {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    top: 17px;
+    left: 24px;
+    pointer-events: auto;
+}
+
+.logo {
+    position: relative;
+    display: block;
+    width: 130px;
+    height: auto;
+    flex: 0 0 130px;
+    top: 0;
+    left: 0;
+}
+
+.logo img {
+    position: relative;
+    display: block;
+    width: 160px;
+    height: auto;
+    max-width: none;
+    top: 0;
+    left: 0;
+    image-rendering: pixelated;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.logo img:hover {
+    opacity: 0.9;
+}
+
+.nav-menu {
+    position: relative;
+    margin-left: 63px;
+    top: 27px;
+    left: 0;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+.nav-menu a {
+    position: relative;
+    display: block;
+    color: #74b553;
+    text-decoration: none;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: #74b553;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+.nav-menu a:hover::after,
+body:has(#home:target) .nav-menu a[href="#home"]::after,
+body:has(#about:target) .nav-menu a[href="#about"]::after,
+body:has(#features:target) .nav-menu a[href="#features"]::after,
+body:has(#topics:target) .nav-menu a[href="#topics"]::after,
+body:has(#contact:target) .nav-menu a[href="#contact"]::after,
+body:has(#playgame:target) .nav-menu a[href="#playgame"]::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+
+    width: calc(100% - 20px);
+    height: calc(100vh - 60px);
+    min-height: 650px;
+
+    top: 130px;
+    left: 20px;
+
+    padding: 32px 30px 40px 29px;
+
+    scroll-margin-top: 130px;
+
+    overflow: visible;
+
+    background: #000000;
+}
+
+.hero-video {
+    position: absolute;
+
+    top: -100px;
+    right: 0px;
+
+    width: 65%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+    /* fade the left side of the video into black */
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(0, 0, 0, 0.4) 30%,
+            black 55%,
+            black 100%);
+
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(0, 0, 0, 0.4) 30%,
+            black 55%,
+            black 100%);
+}
+
+.hero-video-overlay {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 65%;
+    height: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 65%,
+            rgba(0, 0, 0, 0.95) 100%);
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 2;
+    width: 750px;
+    top: 0;
+    left: 0;
+}
+
+.hero h1 {
+    position: relative;
+    margin: 0 0 22px 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+    top: 0;
+    left: 0;
+}
+
+.tagline {
+    position: relative;
+    margin: 0 0 13px 1px;
+    color: #00ff1a;
+    font-style: italic;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 20px;
+    line-height: 1.25;
+    white-space: nowrap;
+    top: 0;
+    left: 4px;
+}
+
+.description {
+    position: relative;
+    margin: 0 0 0 1px;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 20px;
+    line-height: 1.28;
+    top: 10px;
+    left: 4px;
+}
+
+.action-container {
+    position: absolute;
+    z-index: 3;
+    top: 153px;
+    left: 870px;
+}
+
+.play-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 95px;
+    border: 2px solid #00ff1a;
+    background: rgba(0, 0, 0, 0.15);
+    color: #00ff1a;
+    text-decoration: none;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 28px;
+    line-height: 1;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.02);
+}
+
+.about-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 850px;
+    padding: 60px 37px 180px 37px;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 100px;
+}
+
+.about-intro {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 20px;
+}
+
+.about-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.about-title h1 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+}
+
+.about-line {
+    position: relative;
+    width: 905px;
+    height: 35px;
+    margin-left: 14px;
+    opacity: 0.9;
+    background: #28ad3c;
+    top: 0;
+    left: 0;
+}
+
+.about-content {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 30px;
+    top: 0;
+    left: 0;
+}
+
+.about-text {
+    position: relative;
+    width: 530px;
+    top: 20px;
+    left: 0;
+}
+
+.about-text p {
+    position: relative;
+    margin: 0 0 25px 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 20px;
+    line-height: 1.35;
+    text-align: justify;
+    top: 0;
+    left: 0;
+}
+
+.about-images {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 210px);
+    grid-template-rows: repeat(2, 210px);
+    gap: 14px;
+    margin-left: 120px;
+    top: 25px;
+    left: 0;
+}
+
+.about-image {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.about-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.developers-section {
+    position: relative;
+    width: 100%;
+    margin-top: 145px;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+.developers-section h2 {
+    position: relative;
+    margin: 0 0 35px 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    top: 0;
+    left: 0;
+}
+
+.developer-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.developer-card {
+    position: relative;
+    width: 250px;
+    top: 20px;
+    left: 0;
+}
+
+.developer-card img {
+    display: block;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.developer-name {
+    position: relative;
+    margin: 12px 0 0 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 25px;
+    line-height: 1;
+    text-align: center;
+    top: 15px;
+    left: 0;
+}
+
+.developer-details {
+    position: relative;
+    margin: 5px 0 0 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+    top: 25px;
+    left: 0;
+}
+
+.about-divider {
+    position: relative;
+    width: calc(100% - 100px);
+    height: 2px;
+    margin-top: 60px;
+    margin-left: 50px;
+    border-top: 2px dashed rgba(40, 173, 60, 0.45);
+    top: 100px;
+    left: 0;
+}
+
+.features-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 850px;
+    padding: 60px 37px 80px 37px;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 100px;
+}
+
+.features-intro {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 20px;
+}
+
+.features-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.features-title h1 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+}
+
+.features-line {
+    position: relative;
+    width: 882px;
+    height: 35px;
+    margin-left: 14px;
+    opacity: 0.9;
+    background: #28ad3c;
+    top: 0;
+    left: 0;
+}
+
+.topics-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 850px;
+    padding: 60px 37px 250px 37px;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 100px;
+}
+
+.topics-intro {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 20px;
+}
+
+.topics-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.topics-title h1 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+}
+
+.topics-line {
+    position: relative;
+    width: 961px;
+    height: 35px;
+    margin-left: 14px;
+    opacity: 0.9;
+    background: #28ad3c;
+    top: 0;
+    left: 0;
+}
+
+/* =========================
+   PLAY GAME SECTION
+========================= */
+
+.playgame-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    background: #000000;
+    scroll-margin-top: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playgame-container {
+    position: relative;
+    width: 85%;
+    height: 70vh;
+    max-width: 1200px;
+    background: #000000;
+    overflow: hidden;
+}
+
+.playgame-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+footer {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 10px;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+.contact-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    min-height: 850px;
+    padding: 60px 37px 200px 37px;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 100px;
+}
+
+.contact-intro {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 20px;
+}
+
+.contact-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.contact-title h1 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: #28ad3c;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+}
+
+.contact-line {
+    position: relative;
+    width: 916px;
+    height: 35px;
+    margin-left: 14px;
+    opacity: 0.9;
+    background: #28ad3c;
+    top: 0;
+    left: 0;
+}
+
+footer p {
+    position: relative;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+@media (max-width: 700px) {
+    .top-nav {
+        top: 17px;
+        left: 16px;
+    }
+
+    .logo {
+        top: 0;
+        left: 0;
+    }
+
+    .nav-menu {
+        margin-left: 10px;
+        top: -7px;
+        left: 0;
+        overflow-x: auto;
+    }
+
+    .nav-menu ul {
+        gap: 20px;
+    }
+
+    .hero {
+        top: 0;
+        left: 0;
+        padding-top: 130px;
+        padding-left: 22px;
+        padding-right: 22px;
+        min-height: calc(100vh - 60px);
+    }
+
+    .hero-copy {
+        width: calc(100vw - 44px);
+        top: 0;
+        left: 0;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+        top: 0;
+        left: 0;
+    }
+
+    .tagline,
+    .description {
+        font-size: 10px;
+    }
+
+    .description br {
+        display: none;
+    }
+
+    .action-container {
+        position: relative;
+        top: 35px;
+        left: 0;
+        margin-top: 0;
+    }
+
+    .about-section {
+        padding: 100px 22px 60px 22px;
+    }
+
+    .about-title h2 {
+        font-size: 27px;
+    }
+
+    .about-line {
+        height: 18px;
+        margin-left: 10px;
+        width: 100%;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .about-text p {
+        font-size: 10px;
+    }
+
+    .about-images {
+        margin-left: 0;
+        align-self: center;
+    }
+
+    .developers-section {
+        margin-top: 80px;
+    }
+
+    .developers-section h2 {
+        font-size: 27px;
+    }
+
+    .developer-list {
+        gap: 15px;
+    }
+
+    .developer-card {
+        width: 95px;
+    }
+
+    .developer-card img {
+        width: 95px;
+        height: 95px;
+    }
+
+    .developer-card p {
+        font-size: 9px;
+    }
+
+    .about-divider {
+        margin-top: 40px;
+    }
+
+
+    footer {
+        padding: 15px 20px;
+        font-size: 9px;
+    }
+}

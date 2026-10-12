@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      CodeBound: An Educational Video Game for Learning Fundamentals of
+      Programming
+    </title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/playgame.css" />
+
+    <link rel="icon" type="image/png" href="images/favicon1.png" />
+  </head>
+
+  <body class="playgame-page">
+    <!-- =========================
+         TOP NAVIGATION
+    ========================= -->
+
+    <header class="site-header">
+      <nav class="top-nav">
+        <div class="nav-container">
+          <a class="logo" href="home.html">
+            <img src="images/logo.png" alt="CodeBound Logo" />
+          </a>
+
+          <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="features.html">FEATURES</a>
+            <a href="topics.html">TOPICS</a>
+            <a href="contact.html">CONTACT</a>
+          </div>
+
+          <a class="play-btn" href="playgame.html"> PLAY GAME </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+      <section id="playgame" class="playgame-section">
+        <div class="playgame-container">
+          <iframe
+            src="https://itch.io/embed-upload/2796366?color=333333"
+            frameborder="0"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+      <p>&copy; 2026-2027 CodeBound Development Team.</p>
+    </footer>
+
+    <!-- =========================
+         NAV SCROLL
+    ========================= -->
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector(".top-nav");
+
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>
