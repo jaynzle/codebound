@@ -20,19 +20,16 @@
   </head>
 
   <body class="about-page">
-    <!-- =========================
-         TOP NAVIGATION
-    ========================= -->
-
+    <div class="page-background">
+      <img src="images/about-bg.webp" alt="" />
+    </div>
     <header class="site-header">
       <nav class="top-nav">
         <div class="nav-container">
-          <!-- LOGO -->
           <a class="logo" href="index.html">
             <img src="images/logo.png" alt="CodeBound Logo" />
           </a>
 
-          <!-- NAV LINKS -->
           <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="about.html">ABOUT</a>
@@ -41,30 +38,20 @@
             <a href="contact.html">CONTACT</a>
           </div>
 
-          <!-- PLAY GAME -->
-          <a class="play-btn" href="playgame.html"> PLAY GAME </a>
+          <a class="play-btn" href="playgame.html">PLAY GAME</a>
         </div>
       </nav>
     </header>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
-
     <main>
       <section id="about" class="about-section">
-        <!-- ABOUT INTRO -->
-
         <div class="about-intro">
           <div class="about-title">
             <h1>ABOUT US</h1>
-
             <div class="about-line"></div>
           </div>
 
           <div class="about-content">
-            <!-- TEXT -->
-
             <div class="about-text">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -84,8 +71,6 @@
                 nibh euismod gravida.
               </p>
             </div>
-
-            <!-- IMAGES -->
 
             <div class="about-images">
               <div class="about-image">
@@ -107,35 +92,25 @@
           </div>
         </div>
 
-        <!-- =========================
-                 DEVELOPERS
-            ========================= -->
-
         <div class="developers-section">
           <h2>THE DEVELOPERS</h2>
 
           <div class="developer-list">
             <div class="developer-card">
               <img src="images/lexine.webp" alt="Lexine Buenavista" />
-
               <p class="developer-name">Lexine Buenavista</p>
-
               <p class="developer-details">Assets Designer</p>
             </div>
 
             <div class="developer-card">
               <img src="images/nathan.webp" alt="Nathan Esmaya" />
-
               <p class="developer-name">Nathan Esmaya</p>
-
               <p class="developer-details">Co-Developer</p>
             </div>
 
             <div class="developer-card">
               <img src="images/shinji.webp" alt="Shinji Monton" />
-
               <p class="developer-name">Shinji Monton</p>
-
               <p class="developer-details">Main Developer</p>
             </div>
           </div>
@@ -145,28 +120,82 @@
       </section>
     </main>
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="images/logo.png" alt="CodeBound Logo" />
+          </a>
 
-    <footer>
-      <p>&copy; 2026-2027 CodeBound Development Team.</p>
+          <p class="footer-tagline">Learn. Solve. Break Through.</p>
+
+          <div class="footer-socials">
+            <a
+              href="#"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/facebook.png" alt="Facebook" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/instagram.png" alt="Instagram" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/youtube.png" alt="YouTube" />
+            </a>
+
+            <a
+              href="#"
+              aria-label="X"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/x.png" alt="X" />
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>QUICK LINKS</h3>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="features.html">Features</a>
+          <a href="topics.html">Topics</a>
+          <a href="playgame.html">Play Game</a>
+        </div>
+
+        <div class="footer-contact">
+          <h3>CONTACT US</h3>
+          <a href="contact.html">Contact Page</a>
+          <a href="mailto:your-email@example.com">Email Us</a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026-2027 CodeBound Development Team.</p>
+
+        <div class="footer-legal">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
     </footer>
 
-    <!-- =========================
-         NAV SCROLL
-    ========================= -->
-
-    <script>
-      window.addEventListener("scroll", function () {
-        const nav = document.querySelector(".top-nav");
-
-        if (window.scrollY > 50) {
-          nav.classList.add("scrolled");
-        } else {
-          nav.classList.remove("scrolled");
-        }
-      });
-    </script>
+    <script src="js/script.js"></script>
   </body>
 </html>

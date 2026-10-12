@@ -1,7 +1,3 @@
-/* =========================
-   BASE
-========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -10,112 +6,103 @@ html {
     margin: 0;
     padding: 0;
     min-height: 100%;
-
     background: #000000;
-
     scroll-behavior: smooth;
 }
 
 body {
     position: relative;
-
     margin: 0;
     padding: 0;
-
     min-height: 100vh;
-
     background: #000000;
     color: #74b553;
-
     font-family: "Pixelify Sans", monospace;
     font-size: 16px;
     font-weight: 400;
-
     font-smooth: never;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
-
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-
     overflow-x: hidden;
 }
 
+body.home-page {
+    background: #000000;
+}
 
+.page-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background: #000000;
+}
 
-/* =========================
-   HEADER
-========================= */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+}
 
 .site-header {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 76px;
-
     z-index: 1000;
-
     pointer-events: none;
 }
-
-
-
-/* =========================
-   TOP NAV
-========================= */
 
 .top-nav {
     position: relative;
-
     width: 100%;
     height: 76px;
-
     background: transparent;
-
     pointer-events: auto;
-
     transition: background 0.3s ease;
 }
 
-
-
-/* =========================
-   NAV FADE
-========================= */
-
 .top-nav::after {
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 150px;
-
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.75) 20%,
-            rgba(0, 0, 0, 0.45) 45%,
-            rgba(0, 0, 0, 0.18) 70%,
-            rgba(0, 0, 0, 0) 100%);
-
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.75) 20%,
+        rgba(0, 0, 0, 0.45) 45%,
+        rgba(0, 0, 0, 0.18) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
     pointer-events: none;
-
     opacity: 0;
-
     transition: opacity 0.7s ease;
 }
-
-
-
-/* =========================
-   SCROLLED NAV
-========================= */
 
 .top-nav.scrolled {
     background: transparent;
@@ -125,56 +112,30 @@ body {
     opacity: 1;
 }
 
-
-
-/* =========================
-   NAV CONTAINER
-========================= */
-
 .nav-container {
     position: relative;
-
     width: min(calc(100% - 40px), 1400px);
-
     height: 100%;
-
     margin: 0 auto;
-
     display: flex;
-
     align-items: center;
-
     z-index: 2;
 }
 
-
-
-/* =========================
-   LOGO
-========================= */
-
 .logo {
     display: flex;
-
     align-items: center;
-
     flex-shrink: 0;
-
     text-decoration: none;
 }
 
 .logo img {
     display: block;
-
     width: 90px;
     height: auto;
-
     max-width: none;
-
     image-rendering: pixelated;
-
     opacity: 1;
-
     transition: opacity 0.25s ease;
 }
 
@@ -182,122 +143,58 @@ body {
     opacity: 0.9;
 }
 
-
-
-/* =========================
-   NAV LINKS
-========================= */
-
 .nav-links {
     display: flex;
-
     align-items: center;
-
     gap: clamp(20px, 3.5vw, 55px);
-
     margin-left: clamp(30px, 5vw, 80px);
-
     min-width: 0;
 }
 
 .nav-links a {
     position: relative;
-
     display: block;
-
     color: #74b553;
-
     text-decoration: none;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: clamp(12px, 1vw, 16px);
-
     line-height: 1;
-
     text-transform: uppercase;
-
     white-space: nowrap;
 }
-
-
-
-/* =========================
-   NAV LINK UNDERLINE
-========================= */
 
 .nav-links a::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     bottom: -4px;
-
     width: 100%;
     height: 1px;
-
     background: #74b553;
-
     opacity: 0;
-
     transform: scaleX(0);
-
     transform-origin: center;
-
-    transition:
-        opacity 0.1s ease,
-        transform 0.1s ease;
+    transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
-
-
-/* HOVER */
-
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.home-page .nav-links a[href="index.html"]::after {
     opacity: 1;
-
     transform: scaleX(1);
 }
-
-
-
-/* ACTIVE HOME */
-
-.home-page .nav-links a[href="home.html"]::after {
-    opacity: 1;
-
-    transform: scaleX(1);
-}
-
-
-
-/* =========================
-   NAV PLAY BUTTON
-========================= */
 
 .play-btn {
     margin-left: auto;
-
     padding: 12px 28px;
-
     background: #20b83a;
     color: #001b05;
-
     border-radius: 30px;
-
-    box-shadow:
-        0 0 10px rgba(0, 0, 0, 0.3);
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-decoration: none;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: 14px;
     font-weight: bold;
-
     white-space: nowrap;
-
     transition: transform 0.3s ease;
 }
 
@@ -305,206 +202,83 @@ body {
     transform: scale(1.05);
 }
 
-
-
-/* =========================
-   HERO
-========================= */
+main {
+    position: relative;
+    z-index: 1;
+}
 
 .hero {
     position: relative;
-
     width: 100%;
     height: 100vh;
     min-height: 650px;
-
     overflow: hidden;
-
     display: flex;
     align-items: center;
-
-    padding:
-        100px clamp(30px, 7vw, 120px) 60px;
-
-    background: #000000;
+    padding: 100px clamp(30px, 7vw, 120px) 60px;
+    background: transparent;
 }
-
-
-
-/* =========================
-   HERO VIDEO
-========================= */
-
-.hero-video {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    opacity: 0.5;
-
-    z-index: 0;
-
-
-}
-
-
-
-/* =========================
-   VIDEO OVERLAY
-========================= */
-
-.hero-video-overlay {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.5) 80%,
-            #000000 100%);
-}
-
-
-
-/* =========================
-   HERO COPY
-========================= */
 
 .hero-copy {
     position: relative;
-
     z-index: 2;
-
     width: min(750px, 55vw);
-
     top: 25px;
 }
 
-
-
-/* =========================
-   HERO TITLE
-========================= */
-
 .hero h1 {
     position: relative;
-
     margin: 0 0 22px 0;
-
     color: #28ad3c;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: clamp(40px, 5vw, 60px);
-
     font-weight: 700;
-
     line-height: 1;
-
     letter-spacing: -1px;
 }
 
-
-
-/* =========================
-   TAGLINE
-========================= */
-
 .tagline {
     position: relative;
-
     margin: 0 0 24px 1px;
-
     color: #00ff1a;
-
     font-style: italic;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: clamp(14px, 1.5vw, 20px);
-
     line-height: 1.25;
-
     white-space: nowrap;
 }
 
-
-
-/* =========================
-   DESCRIPTION
-========================= */
-
 .description {
     position: relative;
-
     margin: 0 0 0 1px;
-
     max-width: 750px;
-
     color: #28ad3c;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: clamp(14px, 1.5vw, 20px);
-
     line-height: 1.28;
 }
 
-
-
-/* =========================
-   HERO PLAY BUTTON
-========================= */
-
 .hero-action {
     position: relative;
-
     z-index: 3;
-
     margin-top: 35px;
 }
 
 .hero-play-button {
     position: relative;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 135px;
     height: 62px;
-
     border: 2px solid #00ff1a;
-
     background: rgba(0, 0, 0, 0.15);
-
     color: #00ff1a;
-
     text-decoration: none;
-
     font-family: "Pixelify Sans", monospace;
-
     font-size: 18px;
-
     line-height: 1;
-
     text-transform: uppercase;
-
     transition: transform 0.25s ease;
 }
 
@@ -512,11 +286,41 @@ body {
     transform: scale(1.02);
 }
 
+.trailer-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 400px;
+    padding: 45px 20px 70px;
+    background: transparent;
+    text-align: center;
+}
 
+.trailer-section h2 {
+    margin: 0 0 35px;
+    color: #74b553;
+    font-family: "Pixelify Sans", monospace;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.3;
+}
 
-/* =========================
-   FOOTER
-========================= */
+.trailer-video {
+    position: relative;
+    width: min(800px, 100%);
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(116, 181, 83, 0.3);
+    background: #000000;
+}
+
+.trailer-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
 .site-footer {
     position: relative;
@@ -530,8 +334,6 @@ body {
     text-align: left;
 }
 
-/* MAIN FOOTER COLUMNS */
-
 .footer-main {
     display: grid;
     grid-template-columns: 1.5fr 0.8fr 0.8fr;
@@ -540,17 +342,6 @@ body {
     margin: 0 auto;
     padding-bottom: 30px;
 }
-
-
-.footer-links {
-    margin-left: 200px;
-}
-
-.footer-contact {
-    margin-left: 100px;
-}
-
-/* BRAND */
 
 .footer-brand {
     display: flex;
@@ -579,8 +370,6 @@ body {
     line-height: 1.5;
 }
 
-/* SOCIAL ICONS */
-
 .footer-socials {
     display: flex;
     align-items: center;
@@ -597,9 +386,7 @@ body {
     border: 1px solid rgba(116, 181, 83, 0.25);
     border-radius: 50%;
     background: rgba(11, 32, 1, 0.089);
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
+    transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .footer-socials a:hover {
@@ -614,14 +401,20 @@ body {
     object-fit: contain;
 }
 
-/* QUICK LINKS + CONTACT */
-
 .footer-links,
 .footer-contact {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+}
+
+.footer-links {
+    margin-left: 200px;
+}
+
+.footer-contact {
+    margin-left: 100px;
 }
 
 .footer-links h3,
@@ -646,8 +439,6 @@ body {
     color: #74b553;
 }
 
-/* DIVIDER */
-
 .footer-divider {
     width: 100%;
     max-width: 1400px;
@@ -655,8 +446,6 @@ body {
     margin: 0 auto;
     background: rgba(193, 208, 193, 0.22);
 }
-
-/* BOTTOM ROW */
 
 .footer-bottom {
     display: flex;
@@ -688,11 +477,102 @@ body {
     color: #74b553;
 }
 
-/* =========================
-   TABLET
-========================= */
+@media (max-width: 1000px) {
+    .nav-links {
+        gap: clamp(15px, 2.5vw, 30px);
+        margin-left: clamp(20px, 3vw, 50px);
+    }
+
+    .play-btn {
+        padding: 11px 22px;
+    }
+
+    .hero {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .hero-copy {
+        width: 55%;
+    }
+
+    .footer-links {
+        margin-left: 80px;
+    }
+
+    .footer-contact {
+        margin-left: 30px;
+    }
+}
 
 @media (max-width: 750px) {
+    .site-header,
+    .top-nav {
+        height: 70px;
+    }
+
+    .nav-container {
+        width: calc(100% - 30px);
+    }
+
+    .logo img {
+        width: 75px;
+    }
+
+    .nav-links {
+        margin-left: 20px;
+        gap: 18px;
+        overflow: hidden;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .play-btn {
+        padding: 10px 17px;
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding: 110px 25px 60px;
+        align-items: flex-start;
+    }
+
+    .hero-copy {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px, 9vw, 50px);
+    }
+
+    .tagline {
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .hero-action {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin-top: 40px;
+    }
+
+    .hero-play-button {
+        width: 190px;
+        height: 65px;
+        font-size: 20px;
+    }
+
     .footer-main {
         grid-template-columns: 1.2fr 1fr;
         gap: 35px;
@@ -702,6 +582,11 @@ body {
         grid-column: 1 / -1;
     }
 
+    .footer-links,
+    .footer-contact {
+        margin-left: 0;
+    }
+
     .footer-bottom {
         align-items: flex-start;
         flex-direction: column;
@@ -709,9 +594,51 @@ body {
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .play-btn {
+        margin-left: auto;
+    }
+
+    .hero {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .hero-copy {
+        margin-top: 30px;
+    }
+
+    .trailer-section {
+        min-height: auto;
+        padding: 35px 20px 50px;
+    }
+
+    .trailer-section h2 {
+        margin-bottom: 25px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: 12px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        font-size: 9px;
+    }
+
+    .footer-legal {
+        gap: 15px;
+    }
+}
 
 @media (max-width: 480px) {
     .site-footer {
@@ -730,196 +657,4 @@ body {
     .footer-logo img {
         width: 110px;
     }
-
-    .footer-links h3,
-    .footer-contact h3 {
-        font-size: 12px;
-    }
-
-    .footer-links a,
-    .footer-contact a {
-        font-size: 11px;    
-    }
-
-    .footer-bottom {
-        font-size: 9px;
-    }
-
-    .footer-legal {
-        gap: 15px;
-    }
-}
-
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 1000px) {
-
-    .nav-links {
-        gap: clamp(15px, 2.5vw, 30px);
-
-        margin-left:
-            clamp(20px, 3vw, 50px);
-    }
-
-    .play-btn {
-        padding: 11px 22px;
-    }
-
-    .hero {
-        padding-left: 6vw;
-        padding-right: 6vw;
-    }
-
-    .hero-copy {
-        width: 55%;
-    }
-
-}
-
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 750px) {
-
-    .site-header,
-    .top-nav {
-        height: 70px;
-    }
-
-    .nav-container {
-        width: calc(100% - 30px);
-    }
-
-    .logo img {
-        width: 75px;
-    }
-
-    .nav-links {
-        margin-left: 20px;
-
-        gap: 18px;
-
-        overflow: hidden;
-    }
-
-    .nav-links a {
-        font-size: 11px;
-    }
-
-    .play-btn {
-        padding: 10px 17px;
-
-        font-size: 11px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-        min-height: 100vh;
-
-        padding:
-            110px 25px 60px;
-
-        align-items: flex-start;
-    }
-
-    .hero-video {
-        width: 100%;
-
-        opacity: 0.45;
-
-        -webkit-mask-image: linear-gradient(to right,
-                black 0%,
-                black 100%);
-
-        mask-image: linear-gradient(to right,
-                black 0%,
-                black 100%);
-    }
-
-    .hero-video-overlay {
-        width: 100%;
-
-        background: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.25) 0%,
-                rgba(0, 0, 0, 0.75) 70%,
-                #000000 100%);
-    }
-
-    .hero-copy {
-        width: 100%;
-
-        margin-top: 40px;
-    }
-
-    .hero h1 {
-        font-size: clamp(32px, 9vw, 50px);
-    }
-
-    .tagline {
-        font-size: 14px;
-
-        white-space: normal;
-    }
-
-    .description {
-        font-size: 14px;
-
-        line-height: 1.45;
-    }
-
-    .hero-action {
-        position: relative;
-
-        top: auto;
-        right: auto;
-
-        transform: none;
-
-        margin-top: 40px;
-    }
-
-    .hero-play-button {
-        width: 190px;
-
-        height: 65px;
-
-        font-size: 20px;
-    }
-
-}
-
-
-
-/* =========================
-   VERY SMALL SCREENS
-========================= */
-
-@media (max-width: 600px) {
-
-    .nav-links {
-        display: none;
-    }
-
-    .play-btn {
-        margin-left: auto;
-    }
-
-    .hero {
-        padding-left: 22px;
-        padding-right: 22px;
-    }
-
-    .hero-copy {
-        margin-top: 30px;
-    }
-
 }
