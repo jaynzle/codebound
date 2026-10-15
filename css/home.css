@@ -32,6 +32,8 @@ body.home-page {
     background: #000000;
 }
 
+/* BACKGROUND VIDEO */
+
 .page-background {
     position: fixed;
     inset: 0;
@@ -51,7 +53,7 @@ body.home-page {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
 .background-overlay {
@@ -64,6 +66,8 @@ body.home-page {
         rgba(0, 0, 0, 0.65) 100%
     );
 }
+
+/* NAVIGATION */
 
 .site-header {
     position: fixed;
@@ -202,10 +206,14 @@ body.home-page {
     transform: scale(1.05);
 }
 
+/* MAIN CONTENT */
+
 main {
     position: relative;
     z-index: 1;
 }
+
+/* HERO SECTION */
 
 .hero {
     position: relative;
@@ -222,7 +230,7 @@ main {
 .hero-copy {
     position: relative;
     z-index: 2;
-    width: min(750px, 55vw);
+    width: min(750px, 58vw);
     top: 25px;
 }
 
@@ -241,7 +249,6 @@ main {
     position: relative;
     margin: 0 0 24px 1px;
     color: #00ff1a;
-    font-style: italic;
     font-family: "Pixelify Sans", monospace;
     font-size: clamp(14px, 1.5vw, 20px);
     line-height: 1.25;
@@ -258,10 +265,15 @@ main {
     line-height: 1.28;
 }
 
+/* HERO PLAY BUTTON */
+
 .hero-action {
-    position: relative;
+    position: absolute;
     z-index: 3;
-    margin-top: 35px;
+    top: 50%;
+    right: clamp(35px, 12vw, 180px);
+    transform: translateY(-50%);
+    margin-top: 0;
 }
 
 .hero-play-button {
@@ -269,8 +281,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 135px;
-    height: 62px;
+    width: 175px;
+    height: 70px;
     border: 2px solid #00ff1a;
     background: rgba(0, 0, 0, 0.15);
     color: #00ff1a;
@@ -285,6 +297,39 @@ main {
 .hero-play-button:hover {
     transform: scale(1.02);
 }
+
+/* GENRE PILLS */
+
+.genre-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 38px;
+    color: #93fd9a;
+}
+
+.genre-label {
+    margin-right: 14px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.genre-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 27px;
+    padding: 5px 15px;
+    border: 1px solid #27aa3b;
+    border-radius: 999px;
+    color: #93fd9a;
+    font-size: 13px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* TRAILER SECTION */
 
 .trailer-section {
     position: relative;
@@ -322,6 +367,8 @@ main {
     border: none;
 }
 
+/* FOOTER */
+
 .site-footer {
     position: relative;
     z-index: 2;
@@ -336,8 +383,8 @@ main {
 
 .footer-main {
     display: grid;
-    grid-template-columns: 1.5fr 0.8fr 0.8fr;
-    gap: 50px;
+    grid-template-columns: minmax(0, 1fr) 100px 100px;
+    column-gap: 50px;
     width: min(100%, 1400px);
     margin: 0 auto;
     padding-bottom: 30px;
@@ -352,53 +399,23 @@ main {
 .footer-logo {
     display: inline-flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: -15px;
+    margin-left: -20px;
 }
 
 .footer-logo img {
     display: block;
-    width: 125px;
+    width: 170px;
     max-width: 100%;
     height: auto;
     image-rendering: pixelated;
 }
 
 .footer-tagline {
-    margin: 0 0 18px;
-    color: #92fd92;
+    margin-left: 5px;
+    color: #74b553;
     font-size: 12px;
     line-height: 1.5;
-}
-
-.footer-socials {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-socials a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    padding: 6px;
-    border: 1px solid rgba(116, 181, 83, 0.25);
-    border-radius: 50%;
-    background: rgba(11, 32, 1, 0.089);
-    transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.footer-socials a:hover {
-    background: rgba(116, 181, 83, 0.2);
-    transform: translateY(-3px);
-}
-
-.footer-socials img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
 
 .footer-links,
@@ -406,21 +423,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-}
-
-.footer-links {
-    margin-left: 195px;
-}
-
-.footer-contact {
-    margin-left: 100px;
+    gap: 4px;
+    margin: 0;
+    width: 100px;
 }
 
 .footer-links h3,
 .footer-contact h3 {
     margin: 0 0 5px;
-    color: #92fd92;
+    color: #93fd9a;
     font-family: "Pixelify Sans", monospace;
     font-size: 14px;
     font-weight: 700;
@@ -428,7 +439,7 @@ main {
 
 .footer-links a,
 .footer-contact a {
-    color: #92fd92;
+    color: #93fd9a;
     font-size: 12px;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -444,38 +455,38 @@ main {
     max-width: 1400px;
     height: 1px;
     margin: 0 auto;
-    background: rgba(193, 208, 193, 0.22);
+    opacity: 0.1;
+    background: #27aa3b;
 }
 
 .footer-bottom {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 8px;
     width: min(100%, 1400px);
     margin: 0 auto;
-    padding-top: 15px;
-    color: #92fd92;
+    padding-top: 28px;
+    color: #93fd9a;
     font-size: 10px;
+    text-align: center;
+}
+
+.footer-game-logo {
+    display: block;
+    width: 133px;
+    height: auto;
+    margin: 0 auto 2px;
+    object-fit: contain;
+    image-rendering: pixelated;
 }
 
 .footer-bottom p {
     margin: 0;
 }
 
-.footer-legal {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-legal a {
-    color: #92fd92;
-    text-decoration: none;
-}
-
-.footer-legal a:hover {
-    color: #74b553;
-}
+/* TABLET */
 
 @media (max-width: 1000px) {
     .nav-links {
@@ -496,14 +507,17 @@ main {
         width: 55%;
     }
 
-    .footer-links {
-        margin-left: 80px;
+    .hero-action {
+        right: 6vw;
     }
 
-    .footer-contact {
-        margin-left: 30px;
+    .hero-play-button {
+        width: 150px;
+        height: 65px;
     }
 }
+
+/* SMALLER SCREENS */
 
 @media (max-width: 750px) {
     .site-header,
@@ -545,6 +559,24 @@ main {
         margin-top: 40px;
     }
 
+    .hero-action {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin-top: 28px;
+    }
+
+    .genre-list {
+        gap: 8px;
+        margin-top: 28px;
+    }
+
+    .genre-label {
+        width: 100%;
+        margin-right: 0;
+    }
+
     .hero h1 {
         font-size: clamp(32px, 9vw, 50px);
     }
@@ -559,14 +591,6 @@ main {
         line-height: 1.45;
     }
 
-    .hero-action {
-        position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
-        margin-top: 40px;
-    }
-
     .hero-play-button {
         width: 190px;
         height: 65px;
@@ -574,25 +598,25 @@ main {
     }
 
     .footer-main {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 35px;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
+        grid-template-columns: minmax(0, 1fr) 100px 100px;
+        column-gap: 25px;
     }
 
     .footer-links,
     .footer-contact {
-        margin-left: 0;
+        width: 100px;
+        margin: 0;
     }
 
     .footer-bottom {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+        text-align: center;
     }
 }
+
+/* MOBILE */
 
 @media (max-width: 600px) {
     .nav-links {
@@ -621,24 +645,27 @@ main {
         margin-bottom: 25px;
     }
 
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr) 100px 100px;
+        column-gap: 15px;
+    }
+
     .footer-links h3,
     .footer-contact h3 {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .footer-links a,
     .footer-contact a {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .footer-bottom {
         font-size: 9px;
     }
-
-    .footer-legal {
-        gap: 15px;
-    }
 }
+
+/* SMALL MOBILE */
 
 @media (max-width: 480px) {
     .site-footer {
@@ -646,15 +673,26 @@ main {
     }
 
     .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 20px;
+        grid-template-columns: minmax(0, 1fr) 90px 90px;
+        column-gap: 10px;
     }
 
-    .footer-brand {
-        grid-column: 1 / -1;
+    .footer-links,
+    .footer-contact {
+        width: 90px;
     }
 
     .footer-logo img {
         width: 110px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: 10px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        font-size: 9px;
     }
 }

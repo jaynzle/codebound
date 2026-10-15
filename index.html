@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +22,7 @@
   <body class="home-page">
     <div class="page-background">
       <video class="background-video" autoplay muted loop playsinline>
-        <source src="images/gameplay.mp4" type="video/mp4" />
+        <source src="images/bg-vid.mp4" type="video/mp4" />
       </video>
       <div class="background-overlay"></div>
     </div>
@@ -62,9 +63,19 @@
             and progress through the world of Codebound.
           </p>
 
-          <div class="hero-action">
-            <a href="playgame.html" class="hero-play-button">PLAY GAME</a>
+          <div class="genre-list" aria-label="Game genres">
+            <span class="genre-label">GENRES:</span>
+            <span class="genre-chip">Educational</span>
+            <span class="genre-chip">Roguelike</span>
+            <span class="genre-chip">Adventure</span>
+            <span class="genre-chip">Puzzle</span>
           </div>
+        </div>
+
+        <div class="hero-action">
+          <a href="playgame.html" class="hero-play-button">
+            PLAY GAME
+          </a>
         </div>
       </section>
 
@@ -75,15 +86,7 @@
           <iframe
             src="https://www.youtube.com/embed/9pOmBSUu_AI?start=1&playlist=9pOmBSUu_AI"
             title="CodeBound Full Trailer"
-            allow="
-              accelerometer;
-              autoplay;
-              clipboard-write;
-              encrypted-media;
-              gyroscope;
-              picture-in-picture;
-              web-share;
-            "
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>
@@ -98,45 +101,9 @@
             <img src="images/logo.png" alt="CodeBound Logo" />
           </a>
 
-          <p class="footer-tagline">Learn. Solve. Break Through.</p>
-
-          <div class="footer-socials">
-            <a
-              href="#"
-              aria-label="Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/facebook.png" alt="Facebook" />
-            </a>
-
-            <a
-              href="#"
-              aria-label="Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/instagram.png" alt="Instagram" />
-            </a>
-
-            <a
-              href="#"
-              aria-label="YouTube"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/youtube.png" alt="YouTube" />
-            </a>
-
-            <a
-              href="#"
-              aria-label="X"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/x.png" alt="X" />
-            </a>
-          </div>
+          <p class="footer-tagline">
+            learn. solve. break through.
+          </p>
         </div>
 
         <div class="footer-links">
@@ -150,20 +117,24 @@
 
         <div class="footer-contact">
           <h3>CONTACT US</h3>
-          <a href="contact.html">Contact Page</a>
-          <a href="mailto:your-email@example.com">Email Us</a>
+          <a href="contact.html">Phone</a>
+          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email</a>
         </div>
       </div>
 
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026-2027 CodeBound Development Team.</p>
+        <img
+          class="footer-game-logo"
+          src="images/ipgames.png"
+          alt="IP Games"
+        />
 
-        <div class="footer-legal">
-          <a href="index.html">Home</a>
-          <a href="contact.html">Contact</a>
-        </div>
+        <p>
+          &copy; 2026-2027 IP Games | CodeBound Development Team.
+          All Rights Reserved.
+        </p>
       </div>
     </footer>
 
