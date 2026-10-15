@@ -201,7 +201,7 @@ main {
     position: relative;
     width: 100%;
     min-height: 500px;
-    padding: 140px clamp(30px, 7vw, 95px) 55px;
+    padding: 150px clamp(30px, 6vw, 100px) 80px;
     background: transparent;
     scroll-margin-top: 100px;
 }
