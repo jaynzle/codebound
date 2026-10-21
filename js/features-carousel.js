@@ -1,224 +1,211 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const viewport = document.getElementById("featuresViewport");
-    const list = document.getElementById("featuresList");
-    const previousButton = document.querySelector(".carousel-prev");
-    const nextButton = document.querySelector(".carousel-next");
-    const progressTrack = document.querySelector(".progress-track");
-    const progressFill = document.getElementById("featuresProgressFill");
-    const progressThumb = document.getElementById("featuresProgressThumb");
 
-    if (
-        !viewport ||
-        !list ||
-        !previousButton ||
-        !nextButton ||
-        !progressTrack ||
-        !progressFill ||
-        !progressThumb
-    ) {
-        return;
-    }
+const viewport = document.getElementById("featuresViewport");
+const track = document.getElementById("featuresTrack");
+const indicators = document.getElementById("featuresIndicators");
 
-    const items = Array.from(list.querySelectorAll(".feature-item"));
+if (viewport && track && indicators) {
+    const originalCards = [...track.children];
+    const total = originalCards.length;
+    const duration = 7000;
+    const transition = "transform 0.65s cubic-bezier(0.22, 0.7, 0.25, 1)";
 
-    if (!items.length) {
-        return;
-    }
-
-    let draggingThumb = false;
-    let thumbOffset = 0;
-    let draggingCards = false;
+    let activeIndex = 0;
+    let virtualIndex = total;
+    let savedElapsed = 0;
+    let lastTime = 0;
+    let dragging = false;
+    let dragMoved = false;
     let dragStartX = 0;
-    let dragStartScroll = 0;
-    let hasDragged = false;
+    let dragStartTranslate = 0;
+    let animationFrame;
 
-    function getGap() {
-        const style = getComputedStyle(list);
-        return parseFloat(style.gap) || 0;
+    originalCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+    });
+
+    originalCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+    });
+
+    const allCards = [...track.children];
+
+    originalCards.forEach((card, index) => {
+        const indicator = document.createElement("button");
+        indicator.type = "button";
+        indicator.className = "feature-indicator";
+        indicator.setAttribute("aria-label", `Show feature ${index + 1}`);
+
+        indicator.addEventListener("click", () => {
+            activeIndex = index;
+            virtualIndex = total + index;
+            savedElapsed = 0;
+            render(true);
+        });
+
+        indicators.appendChild(indicator);
+    });
+
+    const indicatorButtons = [...indicators.children];
+
+    function getTargetOffset(index) {
+        const card = allCards[index];
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        return viewport.clientWidth / 2 - cardCenter;
     }
 
-    function getStep() {
-        const firstItem = items[0];
+    function render(animate = true) {
+        const activeCard = allCards[virtualIndex];
+        if (!activeCard) return;
 
-        return firstItem.getBoundingClientRect().width + getGap();
-    }
+        allCards.forEach((card, index) => {
+            card.classList.toggle("is-active", index === virtualIndex);
+        });
 
-    function getMaxScroll() {
-        return Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-    }
+        track.style.transition = animate ? transition : "none";
+        track.style.transform =
+            `translate3d(${getTargetOffset(virtualIndex)}px, 0, 0)`;
 
-    function getProgress() {
-        const max = getMaxScroll();
+        indicatorButtons.forEach((button, index) => {
+            button.classList.toggle("active", index === activeIndex);
+            button.replaceChildren();
 
-        return max > 0
-            ? Math.min(1, Math.max(0, viewport.scrollLeft / max))
-            : 0;
-    }
-
-    function updateProgress() {
-        const progress = getProgress();
-        const trackWidth = progressTrack.clientWidth;
-        const thumbWidth = progressThumb.offsetWidth;
-        const travel = Math.max(0, trackWidth - thumbWidth);
-
-        progressFill.style.width = `${progress * 100}%`;
-        progressThumb.style.left = `${progress * travel}px`;
-
-        previousButton.disabled = viewport.scrollLeft <= 1;
-        nextButton.disabled = viewport.scrollLeft >= getMaxScroll() - 1;
-
-        progressThumb.setAttribute("aria-valuenow", String(Math.round(progress * 100)));
-        progressThumb.setAttribute("aria-valuemin", "0");
-        progressThumb.setAttribute("aria-valuemax", "100");
-    }
-
-    function moveByCard(direction) {
-        viewport.scrollBy({
-            left: getStep() * direction,
-            behavior: "smooth"
+            if (index === activeIndex) {
+                const fill = document.createElement("span");
+                fill.className = "feature-indicator-fill";
+                fill.style.width =
+                    `${Math.min(savedElapsed / duration * 100, 100)}%`;
+                button.appendChild(fill);
+            }
         });
     }
 
-    previousButton.addEventListener("click", () => moveByCard(-1));
-    nextButton.addEventListener("click", () => moveByCard(1));
-
-    /* REAL-TIME SCROLL PROGRESS */
-
-    viewport.addEventListener("scroll", updateProgress, { passive: true });
-
-    /* CLICK THE TRACK TO SEEK */
-
-    progressTrack.addEventListener("pointerdown", (event) => {
-        if (event.target === progressThumb) {
-            return;
+    function normalizePosition() {
+        if (virtualIndex >= total * 2) {
+            virtualIndex -= total;
+            render(false);
+        } else if (virtualIndex < total) {
+            virtualIndex += total;
+            render(false);
         }
-
-        const rect = progressTrack.getBoundingClientRect();
-        const thumbWidth = progressThumb.offsetWidth;
-        const travel = Math.max(1, rect.width - thumbWidth);
-        const position = Math.max(
-            0,
-            Math.min(travel, event.clientX - rect.left - thumbWidth / 2)
-        );
-
-        viewport.scrollLeft = (position / travel) * getMaxScroll();
-    });
-
-    /* DRAG THE PROGRESS HANDLE */
-
-    progressThumb.addEventListener("pointerdown", (event) => {
-        draggingThumb = true;
-
-        const rect = progressThumb.getBoundingClientRect();
-        thumbOffset = event.clientX - rect.left;
-
-        progressThumb.setPointerCapture(event.pointerId);
-        event.preventDefault();
-    });
-
-    progressThumb.addEventListener("pointermove", (event) => {
-        if (!draggingThumb) {
-            return;
-        }
-
-        const trackRect = progressTrack.getBoundingClientRect();
-        const thumbWidth = progressThumb.offsetWidth;
-        const travel = Math.max(1, trackRect.width - thumbWidth);
-
-        const position = Math.max(
-            0,
-            Math.min(
-                travel,
-                event.clientX - trackRect.left - thumbOffset
-            )
-        );
-
-        viewport.scrollLeft = (position / travel) * getMaxScroll();
-    });
-
-    function endThumbDrag() {
-        draggingThumb = false;
-        updateProgress();
     }
 
-    progressThumb.addEventListener("pointerup", endThumbDrag);
-    progressThumb.addEventListener("pointercancel", endThumbDrag);
+    function advance() {
+        activeIndex = (activeIndex + 1) % total;
+        virtualIndex += 1;
+        savedElapsed = 0;
+        render(true);
+    }
 
-    /* MOUSE DRAGGING */
+    track.addEventListener("transitionend", (event) => {
+        if (event.propertyName !== "transform" || dragging) return;
+        normalizePosition();
+    });
+
+    function animate(now) {
+        if (!lastTime) lastTime = now;
+
+        const delta = Math.min(now - lastTime, 50);
+        lastTime = now;
+
+        if (!dragging) {
+            savedElapsed += delta;
+
+            const fill = indicatorButtons[activeIndex]?.querySelector(
+                ".feature-indicator-fill"
+            );
+
+            if (fill) {
+                fill.style.width =
+                    `${Math.min(savedElapsed / duration * 100, 100)}%`;
+            }
+
+            if (savedElapsed >= duration) {
+                advance();
+            }
+        }
+
+        animationFrame = requestAnimationFrame(animate);
+    }
+
+    function getCurrentTranslate() {
+        const transform = getComputedStyle(track).transform;
+
+        if (!transform || transform === "none") return 0;
+
+        return new DOMMatrixReadOnly(transform).m41;
+    }
 
     viewport.addEventListener("pointerdown", (event) => {
-        if (event.pointerType !== "mouse" || event.button !== 0) {
-            return;
-        }
+        if (event.pointerType === "mouse" && event.button !== 0) return;
 
-        draggingCards = true;
-        hasDragged = false;
+        dragging = true;
+        dragMoved = false;
         dragStartX = event.clientX;
-        dragStartScroll = viewport.scrollLeft;
+        dragStartTranslate = getCurrentTranslate();
+
+        track.style.transition = "none";
+        viewport.classList.add("dragging");
+        viewport.setPointerCapture(event.pointerId);
+        lastTime = performance.now();
     });
 
-    window.addEventListener("pointermove", (event) => {
-        if (!draggingCards) {
-            return;
+    viewport.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+
+        const distance = event.clientX - dragStartX;
+
+        if (Math.abs(distance) > 5) {
+            dragMoved = true;
         }
 
-        const delta = event.clientX - dragStartX;
-
-        if (Math.abs(delta) > 5) {
-            hasDragged = true;
-        }
-
-        if (hasDragged) {
-            viewport.scrollLeft = dragStartScroll - delta;
-        }
+        const translate = dragStartTranslate + distance;
+        track.style.transform = `translate3d(${translate}px, 0, 0)`;
     });
 
-    window.addEventListener("pointerup", () => {
-        draggingCards = false;
+    function finishDrag() {
+        if (!dragging) return;
 
-        if (hasDragged) {
-            setTimeout(() => {
-                hasDragged = false;
-            }, 0);
-        }
-    });
+        dragging = false;
+        viewport.classList.remove("dragging");
 
-    viewport.addEventListener(
-        "click",
-        (event) => {
-            if (hasDragged) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-        },
-        true
-    );
+        if (dragMoved) {
+            const viewportCenter =
+                viewport.getBoundingClientRect().left + viewport.clientWidth / 2;
 
-    /* KEYBOARD CONTROLS */
+            let nearestIndex = virtualIndex;
+            let nearestDistance = Infinity;
 
-    viewport.tabIndex = 0;
+            allCards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const center = rect.left + rect.width / 2;
+                const distance = Math.abs(center - viewportCenter);
 
-    viewport.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowRight") {
-            event.preventDefault();
-            moveByCard(1);
+                if (distance < nearestDistance) {
+                    nearestDistance = distance;
+                    nearestIndex = index;
+                }
+            });
+
+            virtualIndex = nearestIndex;
+            activeIndex = ((virtualIndex % total) + total) % total;
+            savedElapsed = 0;
         }
 
-        if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            moveByCard(-1);
-        }
-    });
-
-    /* RESIZE SUPPORT */
-
-    window.addEventListener("resize", updateProgress);
-
-    if ("ResizeObserver" in window) {
-        const observer = new ResizeObserver(updateProgress);
-        observer.observe(viewport);
-        observer.observe(list);
+        render(true);
+        lastTime = performance.now();
     }
 
-    updateProgress();
-});
+    viewport.addEventListener("pointerup", finishDrag);
+    viewport.addEventListener("pointercancel", finishDrag);
+    viewport.addEventListener("lostpointercapture", finishDrag);
+
+    window.addEventListener("resize", () => render(false));
+
+    render(false);
+    lastTime = performance.now();
+    animationFrame = requestAnimationFrame(animate);
+}

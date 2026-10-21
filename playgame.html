@@ -1,20 +1,12 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>
-      CodeBound: An Educational Video Game for Learning Fundamentals of
-      Programming
-    </title>
+    <title>Play Game | CodeBound</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="css/playgame.css" />
     <link rel="icon" type="image/png" href="images/favicon1.png" />
   </head>
@@ -24,73 +16,93 @@
       <img src="images/playgame-bg.webp" alt="" />
     </div>
 
+    <!-- NAVIGATION -->
     <header class="site-header">
       <nav class="top-nav">
         <div class="nav-container">
           <a class="logo" href="index.html">
-            <img src="images/logo.png" alt="CodeBound Logo" />
+            <img src="images/logo.png" alt="CodeBound logo" />
           </a>
 
           <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="features.html">FEATURES</a>
-            <a href="topics.html">TOPICS</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="features.html">Features</a>
+            <a href="topics.html">Topics</a>
+            <a href="contact.html">Contact</a>
           </div>
 
-          <a class="play-btn" href="playgame.html">PLAY GAME</a>
+          <a class="play-btn active" href="playgame.html" aria-current="page">
+            Play Game
+          </a>
         </div>
       </nav>
     </header>
 
+    <!-- GAME AND CONTROLS -->
     <main>
       <section id="playgame" class="playgame-section">
+        <!-- EMBEDDED GAME -->
         <div class="playgame-container">
           <iframe
-            src="https://itch.io/embed-upload/2796366?color=333333"
             title="Play CodeBound"
+            src="https://itch.io/embed-upload/19907574?color=c5d2da"
             allowfullscreen
-          ></iframe>
+            loading="eager"
+          >
+            <a href="https://shinjimonton.itch.io/codebound">
+              Play CODEBOUND on itch.io
+            </a>
+          </iframe>
         </div>
 
+        <!-- HOW TO PLAY -->
         <div class="how-to-play">
-          <h1>HOW TO PLAY</h1>
+          <h1>How to Play</h1>
 
           <div class="controls-grid">
+            <!-- MOVE -->
             <div class="control-item">
-              <div class="control-key">
-                <kbd>W</kbd>
-                <kbd>A</kbd>
-                <kbd>S</kbd>
-                <kbd>D</kbd>
-              </div>
+              <img
+                class="control-image move-image"
+                src="images/move-icon.png"
+                alt="WASD movement keys"
+              />
 
               <div class="control-info">
-                <h2>MOVE</h2>
+                <h2>Move</h2>
                 <p>Use WASD to move your character.</p>
               </div>
             </div>
 
+            <!-- TYPE -->
             <div class="control-item">
-              <div class="control-key">
-                <kbd>KEYBOARD</kbd>
-              </div>
+              <img
+                class="control-image keyboard-image"
+                src="images/type-icon.png"
+                alt="Keyboard"
+              />
 
               <div class="control-info">
-                <h2>TYPE</h2>
-                <p>Type answers and solve programming challenges.</p>
+                <h2>Type</h2>
+                <p>
+                  Type answers, solve programming challenges, and interact with
+                  objects.
+                </p>
               </div>
             </div>
 
+            <!-- CLICK -->
             <div class="control-item">
-              <div class="control-key">
-                <kbd>MOUSE</kbd>
-              </div>
+              <img
+                class="control-image mouse-image"
+                src="images/click-icon.png"
+                alt="Computer mouse"
+              />
 
               <div class="control-info">
-                <h2>CLICK</h2>
-                <p>Click buttons, select options, and interact with objects.</p>
+                <h2>Click</h2>
+                <p>Click buttons and select options.</p>
               </div>
             </div>
           </div>
@@ -98,11 +110,12 @@
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-main">
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <img src="images/logo.png" alt="CodeBound Logo" />
+            <img src="images/logo.png" alt="CodeBound logo" />
           </a>
 
           <p class="footer-tagline">learn. solve. break through.</p>
@@ -127,12 +140,12 @@
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <img
-          class="footer-game-logo"
-          src="images/ipgames.png"
-          alt="IP Games"
-        />
-        <p>&copy; 2026-2027 IP Games | CodeBound Development Team. All Rights Reserved.</p>
+        <img class="footer-game-logo" src="images/ipgames.png" alt="IP Games" />
+
+        <p>
+          &copy; 2026-2027 IP Games | CodeBound Development Team. All Rights
+          Reserved.
+        </p>
       </div>
     </footer>
 

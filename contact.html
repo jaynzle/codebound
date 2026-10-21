@@ -1,97 +1,76 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>
-      CodeBound: An Educational Video Game for Learning Fundamentals of
-      Programming
-    </title>
+    <title>Contact Us | CodeBound</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="icon" type="image/png" href="images/favicon1.png" />
   </head>
 
-  <body class="contact-page">
-    <div class="page-background">
-      <img src="images/contact-bg.webp" alt="" />
-    </div>
-
+  <body>
     <header class="site-header">
       <nav class="top-nav">
         <div class="nav-container">
           <a class="logo" href="index.html">
-            <img src="images/logo.png" alt="CodeBound Logo" />
+            <img src="images/logo.png" alt="CodeBound logo" />
           </a>
 
           <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="features.html">FEATURES</a>
-            <a href="topics.html">TOPICS</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="features.html">Features</a>
+            <a href="topics.html">Topics</a>
+            <a href="contact.html" class="active">Contact</a>
           </div>
 
-          <a class="play-btn" href="playgame.html">PLAY GAME</a>
+          <a class="play-btn" href="playgame.html">Play Game</a>
         </div>
       </nav>
     </header>
 
-    <main>
-      <section id="contact" class="contact-section">
-        <div class="contact-intro">
-          <div class="contact-title">
-            <h1>CONTACT US</h1>
-            <div class="contact-line"></div>
+    <main class="contact-content">
+      <h1>Contact Us</h1>
+
+      <section class="contact-cards" aria-label="Contact information">
+        <article class="contact-card">
+          <div class="contact-icon">
+            <img src="images/contact-phone-icon.png" alt="Phone icon" />
           </div>
-        </div>
 
-        <div class="contact-cards">
-          <article class="contact-card">
-            <div class="contact-icon">
-              <img src="images/phone.png" alt="" />
-            </div>
+          <h2>Phone</h2>
 
-            <h2>PHONE</h2>
+          <p>
+            For inquiries or further information about CodeBound, feel free to
+            contact our team through the phone number provided.
+          </p>
 
-            <p>
-              For inquiries or further information about CodeBound, feel free
-              to contact our team through the phone number provided.
-            </p>
+          <a class="contact-detail" href="tel:+639550341062"> +639550341062 </a>
+        </article>
 
-            <a class="contact-detail" href="tel:+639550341062">
-              +639 550 341 062
-            </a>
-          </article>
+        <article class="contact-card">
+          <div class="contact-icon">
+            <img src="images/contact-email-icon.png" alt="Email icon" />
+          </div>
 
-          <article class="contact-card">
-            <div class="contact-icon">
-              <img src="images/email.png" alt="" />
-            </div>
+          <h2>Email</h2>
 
-            <h2>EMAIL</h2>
+          <p>
+            For questions, feedback, or other concerns regarding CodeBound, you
+            may reach us through our official email address. We welcome your
+            messages and will be glad to assist you.
+          </p>
 
-            <p>
-              For questions, feedback, or other concerns regarding CodeBound,
-              you may reach us through our official email address. We welcome
-              your messages and will be glad to assist you.
-            </p>
-
-            <a
-              class="contact-detail"
-              href="mailto:esmaya2332367@mls.ceu.edu.ph"
-            >
-              esmaya2332367@mls.ceu.edu.ph
-            </a>
-          </article>
-        </div>
+          <a
+            class="contact-detail email-detail"
+            href="mailto:esmaya2332367@mls.ceu.edu.ph"
+          >
+            esmaya2332367@mls.ceu.edu.ph
+          </a>
+        </article>
       </section>
     </main>
 
@@ -99,12 +78,10 @@
       <div class="footer-main">
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <img src="images/logo.png" alt="CodeBound Logo" />
+            <img src="images/logo.png" alt="CodeBound logo" />
           </a>
 
-          <p class="footer-tagline">
-            learn. solve. break through.
-          </p>
+          <p class="footer-tagline">learn. solve. break through.</p>
         </div>
 
         <div class="footer-links">
@@ -118,27 +95,21 @@
 
         <div class="footer-contact">
           <h3>CONTACT US</h3>
-          <a href="contact.html">Phone</a>
-          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email</a>
+          <a href="contact.html">Contact Page</a>
+          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email Us</a>
         </div>
       </div>
 
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <img
-          class="footer-game-logo"
-          src="images/ipgames.png"
-          alt="IP Games"
-        />
+        <img class="footer-game-logo" src="images/ipgames.png" alt="IP Games" />
 
         <p>
-          &copy; 2026-2027 IP Games | CodeBound Development Team.
-          All Rights Reserved.
+          &copy; 2026-2027 IP Games | CodeBound Development Team. All Rights
+          Reserved.
         </p>
       </div>
     </footer>
-
-    <script src="js/script.js"></script>
   </body>
 </html>

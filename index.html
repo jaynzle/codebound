@@ -1,109 +1,121 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>
-      CodeBound: An Educational Video Game for Learning Fundamentals of
-      Programming
-    </title>
+    <title>CodeBound</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Inter font -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
     <link rel="stylesheet" href="css/home.css" />
     <link rel="icon" type="image/png" href="images/favicon1.png" />
   </head>
 
-  <body class="home-page">
-    <div class="page-background">
-      <video class="background-video" autoplay muted loop playsinline>
-        <source src="images/bg-vid.mp4" type="video/mp4" />
-      </video>
-      <div class="background-overlay"></div>
-    </div>
+  <body>
+    <!-- Hero background -->
+    <section class="hero-background">
+      <!-- Top navigation -->
+      <header class="site-header">
+        <nav class="top-nav">
+          <div class="nav-container">
+            <a class="logo" href="index.html">
+              <img src="images/logo.png" alt="CodeBound logo" />
+            </a>
 
-    <header class="site-header">
-      <nav class="top-nav">
-        <div class="nav-container">
-          <a class="logo" href="index.html">
-            <img src="images/logo.png" alt="CodeBound Logo" />
-          </a>
+            <div class="nav-links">
+              <a href="index.html" class="active">Home</a>
+              <a href="about.html">About</a>
+              <a href="features.html">Features</a>
+              <a href="topics.html">Topics</a>
+              <a href="contact.html">Contact</a>
+            </div>
 
-          <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="features.html">FEATURES</a>
-            <a href="topics.html">TOPICS</a>
-            <a href="contact.html">CONTACT</a>
+            <a class="play-btn" href="playgame.html">Play Game</a>
           </div>
+        </nav>
+      </header>
 
-          <a class="play-btn" href="playgame.html">PLAY GAME</a>
-        </div>
-      </nav>
-    </header>
+      <!-- Hero content -->
+      <div class="hero-content">
+        <h1>CodeBound (Beta)</h1>
 
-    <main>
-      <section id="home" class="hero">
-        <div class="hero-copy">
-          <h1>CODEBOUND</h1>
+        <h2>learn. solve. break through.</h2>
 
-          <p class="tagline">learn. solve. break through.</p>
+        <p class="hero-description">
+          Learn at your own pace as you solve problems, overcome
+          <br class="desktop-break" />
+          challenges, and progress through the world of CodeBound.
+        </p>
 
-          <p class="description">
-            Codebound is a web-based educational video game designed to help
-            students develop fundamental programming concepts through
-            interactive gameplay.
-            <br /><br />
-            Learn at your own pace as you solve problems, overcome challenges,
-            and progress through the world of Codebound.
-          </p>
-
-          <div class="genre-list" aria-label="Game genres">
-            <span class="genre-label">GENRES:</span>
-            <span class="genre-chip">Educational</span>
-            <span class="genre-chip">Roguelike</span>
-            <span class="genre-chip">Adventure</span>
-            <span class="genre-chip">Puzzle</span>
-          </div>
+        <div class="hero-genres">
+          <span>Genres:</span>
+          <span class="genre-tag">Educational</span>
+          <span class="genre-tag">Roguelike</span>
+          <span class="genre-tag">Adventure</span>
+          <span class="genre-tag">Puzzle</span>
         </div>
 
-        <div class="hero-action">
-          <a href="playgame.html" class="hero-play-button">
-            PLAY GAME
+        <a class="hero-play-btn" href="playgame.html">Play Game</a>
+      </div>
+    </section>
+
+    <!-- White content section -->
+    <main class="page-content">
+      <h1>Watch Full Trailer:</h1>
+
+      <div class="trailer-container">
+        <!-- Replace VIDEO_ID with your YouTube trailer ID -->
+        <iframe
+          src="https://www.youtube.com/embed/9pOmBSUu_AI"
+          title="CodeBound Full Trailer"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="quote-section">
+        <p class="quote-text">
+          “Every expert was once a beginner. Every solution began with a
+          problem. And every breakthrough began with someone who refused to give
+          up.”
+        </p>
+
+        <img src="images/quote-cat.png" alt="Pixel cat" class="quote-cat" />
+      </div>
+
+      <!-- EVALUATION FORM SECTION -->
+      <div class="evaluation-section">
+        <div class="evaluation-form-card">
+          <h2>
+            Let us know what you<br />
+            think about CodeBound!
+          </h2>
+
+          <a href="#" class="evaluation-form-btn" target="_blank">
+            Evaluation Form
           </a>
         </div>
-      </section>
-
-      <section class="trailer-section">
-        <h2>WATCH FULL TRAILER:</h2>
-
-        <div class="trailer-video">
-          <iframe
-            src="https://www.youtube.com/embed/9pOmBSUu_AI?start=1&playlist=9pOmBSUu_AI"
-            title="CodeBound Full Trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </section>
+      </div>
     </main>
-
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-main">
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <img src="images/logo.png" alt="CodeBound Logo" />
+            <img src="images/logo.png" alt="CodeBound logo" />
           </a>
 
-          <p class="footer-tagline">
-            learn. solve. break through.
-          </p>
+          <p class="footer-tagline">learn. solve. break through.</p>
         </div>
 
         <div class="footer-links">
@@ -117,27 +129,21 @@
 
         <div class="footer-contact">
           <h3>CONTACT US</h3>
-          <a href="contact.html">Phone</a>
-          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email</a>
+          <a href="contact.html">Contact Page</a>
+          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email Us</a>
         </div>
       </div>
 
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <img
-          class="footer-game-logo"
-          src="images/ipgames.png"
-          alt="IP Games"
-        />
+        <img class="footer-game-logo" src="images/ipgames.png" alt="IP Games" />
 
         <p>
-          &copy; 2026-2027 IP Games | CodeBound Development Team.
-          All Rights Reserved.
+          &copy; 2026-2027 IP Games | CodeBound Development Team. All Rights
+          Reserved.
         </p>
       </div>
     </footer>
-
-    <script src="js/script.js"></script>
   </body>
 </html>

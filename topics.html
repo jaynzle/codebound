@@ -1,132 +1,176 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>CodeBound: Programming Topics</title>
+    <title>Topics | CodeBound</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/topics.css">
-    <link rel="icon" type="image/png" href="images/favicon1.png">
-</head>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="css/topics.css" />
+    <link rel="icon" type="image/png" href="images/favicon1.png" />
+  </head>
 
-<body class="topics-page">
-    <div class="page-background">
-        <img src="images/topics-bg.webp" alt="">
-    </div>
-
+  <body>
     <header class="site-header">
-        <nav class="top-nav">
-            <div class="nav-container">
-                <a class="logo" href="index.html">
-                    <img src="images/logo.png" alt="CodeBound Logo">
-                </a>
+      <nav class="top-nav">
+        <div class="nav-container">
+          <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="CodeBound logo" />
+          </a>
 
-                <div class="nav-links">
-                    <a href="index.html">HOME</a>
-                    <a href="about.html">ABOUT</a>
-                    <a href="features.html">FEATURES</a>
-                    <a href="topics.html">TOPICS</a>
-                    <a href="contact.html">CONTACT</a>
-                </div>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="features.html">Features</a>
+            <a href="topics.html" class="active">Topics</a>
+            <a href="contact.html">Contact</a>
+          </div>
 
-                <a class="play-btn" href="playgame.html">PLAY GAME</a>
-            </div>
-        </nav>
+          <a class="play-btn" href="playgame.html">Play Game</a>
+        </div>
+      </nav>
     </header>
 
-    <main>
-        <section id="topics" class="topics-section">
-            <div class="topics-intro">
-                <div class="topics-title">
-                    <h1>TOPICS</h1>
-                    <div class="topics-line"></div>
-                </div>
+    <main class="topics-content">
+      <section class="topics-intro" id="topics">
+        <h1>Topics</h1>
 
-                <p class="topics-description">
-                    These are the fundamental programming topics we will tackle throughout your adventure. Each topic will introduce you to essential programming concepts through tutorials and interactive activities designed to help you understand how programming works.
-                </p>
+        <p class="topics-description">
+          These are the fundamental programming topics we will tackle throughout
+          your adventure. Each topic will introduce you to essential programming
+          concepts through tutorials and interactive activities designed to help
+          you understand how programming works.
+        </p>
 
-                <div class="language-label">
-                    <span>LANGUAGE:</span>
-                    <span class="language-badge">Python</span>
-                </div>
-            </div>
+        <div class="language-label">
+          <span class="language-text">Language:</span>
+          <span class="language-badge">Python</span>
+        </div>
+      </section>
 
-            <div class="topic-content">
-                <div class="topic-selector" role="tablist" aria-label="Programming topics">
-                    <button class="topic-button active" id="topic-button-variables" type="button" role="tab" aria-selected="true" aria-controls="topic-panels" data-topic="variables">
-                        <span>1.</span>
-                        <span>Variables</span>
-                    </button>
+      <section class="topic-content" aria-label="Programming topics">
+        <div
+          class="topic-selector"
+          role="tablist"
+          aria-label="Programming topics"
+        >
+          <button
+            class="topic-button active"
+            id="topic-button-variables"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="topic-panels"
+            data-topic="variables"
+          >
+            <span>1.</span>
+            <span>Variables</span>
+          </button>
 
-                    <button class="topic-button" id="topic-button-sequences" type="button" role="tab" aria-selected="false" aria-controls="topic-panels" data-topic="sequences">
-                        <span>2.</span>
-                        <span>Sequences</span>
-                    </button>
+          <button
+            class="topic-button"
+            id="topic-button-sequences"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="topic-panels"
+            data-topic="sequences"
+          >
+            <span>2.</span>
+            <span>Sequences</span>
+          </button>
 
-                    <button class="topic-button" id="topic-button-conditionals" type="button" role="tab" aria-selected="false" aria-controls="topic-panels" data-topic="conditionals">
-                        <span>3.</span>
-                        <span>Conditionals</span>
-                    </button>
+          <button
+            class="topic-button"
+            id="topic-button-conditionals"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="topic-panels"
+            data-topic="conditionals"
+          >
+            <span>3.</span>
+            <span>Conditionals</span>
+          </button>
 
-                    <button class="topic-button" id="topic-button-loops" type="button" role="tab" aria-selected="false" aria-controls="topic-panels" data-topic="loops">
-                        <span>4.</span>
-                        <span>Loops</span>
-                    </button>
-                </div>
+          <button
+            class="topic-button"
+            id="topic-button-loops"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="topic-panels"
+            data-topic="loops"
+          >
+            <span>4.</span>
+            <span>Loops</span>
+          </button>
+        </div>
 
-                <div class="topic-panels" id="topic-panels" role="tabpanel" aria-labelledby="topic-button-variables">
-                    <article class="description-panel">
-                        <h2>DESCRIPTION</h2>
-                        <p id="topic-description">Learn how to create variables, assign values, and store different types of data. Discover how programs use variables to remember and manage information.</p>
-                    </article>
+        <div
+          class="topic-panels"
+          id="topic-panels"
+          role="tabpanel"
+          aria-labelledby="topic-button-variables"
+        >
+          <article class="description-panel">
+            <h2>Description</h2>
 
-                    <div class="code-panel">
-                        <pre><code id="topic-code">player_name = "Hero"
+            <p id="topic-description">
+              Learn how to create variables, assign values, and store different
+              types of data. Discover how programs use variables to remember and
+              manage information.
+            </p>
+          </article>
+
+          <div class="code-panel">
+            <div class="code-panel-heading">Example:</div>
+            <pre><code id="topic-code">player_name = "Hero"
 level = 1</code></pre>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-main">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
-                    <img src="images/logo.png" alt="CodeBound Logo">
-                </a>
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="images/logo.png" alt="CodeBound logo" />
+          </a>
 
-                <p class="footer-tagline">learn. solve. break through.</p>
-            </div>
-
-            <div class="footer-links">
-                <h3>QUICK LINKS</h3>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="features.html">Features</a>
-                <a href="topics.html">Topics</a>
-                <a href="playgame.html">Play Game</a>
-            </div>
-
-            <div class="footer-contact">
-                <h3>CONTACT US</h3>
-                <a href="contact.html">Contact Page</a>
-                <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email Us</a>
-            </div>
+          <p class="footer-tagline">learn. solve. break through.</p>
         </div>
 
-        <div class="footer-divider"></div>
-
-        <div class="footer-bottom">
-            <img src="images/ipgames.png" alt="IP Games">
-            <p>&copy; 2026-2027 IP Games | CodeBound Development Team. All Rights Reserved.</p>
+        <div class="footer-links">
+          <h3>QUICK LINKS</h3>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="features.html">Features</a>
+          <a href="topics.html">Topics</a>
+          <a href="playgame.html">Play Game</a>
         </div>
+
+        <div class="footer-contact">
+          <h3>CONTACT US</h3>
+          <a href="contact.html">Contact Page</a>
+          <a href="mailto:esmaya2332367@mls.ceu.edu.ph">Email Us</a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <img class="footer-game-logo" src="images/ipgames.png" alt="IP Games" />
+
+        <p>
+          &copy; 2026-2027 IP Games | CodeBound Development Team. All Rights
+          Reserved.
+        </p>
+      </div>
     </footer>
 
-    <script src="js/script.js"></script>
     <script src="js/topics.js"></script>
-</body>
+  </body>
 </html>

@@ -1,277 +1,239 @@
+/* =========================
+   GLOBAL
+========================= */
 
 * {
     box-sizing: border-box;
 }
 
 html {
+    min-height: 100%;
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    background: #000;
     scroll-behavior: smooth;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
 }
 
 body {
     position: relative;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
-    background: #000;
-    color: #74b553;
-    font-family: "Pixelify Sans", monospace;
-    font-size: 16px;
-    font-weight: 400;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-    image-rendering: pixelated;
+    padding: 0;
     overflow-x: hidden;
+    background: #ffffff;
+    color: #000000;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
 }
 
-body.topics-page {
-    isolation: isolate;
-    background: #000;
-}
-
-.page-background {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-    background: #000;
-}
-
-.page-background img {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.15;
-}
+/* =========================
+   NAVIGATION
+   Matches about.css
+========================= */
 
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 76px;
     z-index: 1000;
-    pointer-events: none;
+    width: 100%;
 }
 
 .top-nav {
-    position: relative;
-    width: 100%;
-    height: 76px;
-    background: transparent;
-    pointer-events: auto;
-}
+    --nav-opacity: 0.65;
+    --nav-blur: 14px;
+    --nav-height: 68px;
 
-.top-nav::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 150px;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.85) 0%,
-        rgba(0, 0, 0, 0.75) 20%,
-        rgba(0, 0, 0, 0.45) 45%,
-        rgba(0, 0, 0, 0.18) 70%,
-        transparent 100%
-    );
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-}
-
-.top-nav.scrolled::after {
-    opacity: 1;
+    height: var(--nav-height);
+    background: rgba(0, 0, 0, var(--nav-opacity));
+    backdrop-filter: blur(var(--nav-blur));
+    -webkit-backdrop-filter: blur(var(--nav-blur));
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
 
 .nav-container {
-    position: relative;
     display: flex;
     align-items: center;
-    width: min(calc(100% - 40px), 1400px);
+    width: min(calc(100% - 64px), 1400px);
     height: 100%;
     margin: 0 auto;
-    z-index: 2;
 }
 
 .logo {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    text-decoration: none;
 }
 
 .logo img {
     display: block;
-    width: 90px;
+    width: 115px;
     height: auto;
-    max-width: none;
-    image-rendering: pixelated;
-    transition: opacity 0.25s ease;
-}
-
-.logo img:hover {
-    opacity: 0.9;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 3.5vw, 55px);
-    margin-left: clamp(30px, 5vw, 80px);
-    min-width: 0;
+    gap: 50px;
+    margin-left: auto;
 }
 
-.nav-links a {
+.nav-links>a {
     position: relative;
-    display: block;
-    color: #74b553;
-    font-family: "Pixelify Sans", monospace;
-    font-size: clamp(12px, 1vw, 16px);
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+    color: #34d445;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
     text-decoration: none;
-    text-transform: uppercase;
     white-space: nowrap;
+    transition: color 0.25s ease;
 }
 
-.nav-links a::after {
+.nav-links>a::before {
     content: "";
     position: absolute;
+    bottom: 0;
     left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 1px;
-    background: #74b553;
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: opacity 0.1s ease, transform 0.1s ease;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #34d445, #81c67b);
+    transition: all 0.25s ease-in-out;
 }
 
-.nav-links a:hover::after,
-.topics-page .nav-links a[href="topics.html"]::after {
-    opacity: 1;
-    transform: scaleX(1);
+.nav-links>a:hover::before,
+.nav-links>a.active::before {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.nav-links>a.active {
+    color: #34d445;
 }
 
 .play-btn {
-    margin-left: auto;
-    padding: 12px 28px;
-    background: #20b83a;
-    color: #001b05;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    font-family: "Pixelify Sans", monospace;
-    font-size: 14px;
-    font-weight: 700;
+    position: relative;
+    isolation: isolate;
+    margin-left: 49px;
+    padding: 10px 22px;
+    color: #032018;
+    border-radius: 999px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
     text-decoration: none;
     white-space: nowrap;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
+}
+
+.play-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #34d445;
+    border-radius: inherit;
+    opacity: 0.4;
 }
 
 .play-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
-main {
-    position: relative;
-    z-index: 1;
-}
+/* =========================
+   TOPICS INTRO
+   Matches about/features
+========================= */
 
-.topics-section {
-    position: relative;
+.topics-content {
     width: 100%;
-    padding: 150px clamp(30px, 5.8vw, 80px) 100px;
-    background: transparent;
-    scroll-margin-top: 100px;
+    min-height: 100vh;
+    margin-top: 70px;
+    padding: 75px 0 60px;
+    background: #ffffff;
+    color: #000000;
 }
 
 .topics-intro {
-    position: relative;
-    width: min(1400px, 100%);
-    margin: 0 auto;
-}
-
-.topics-title {
-    display: flex;
-    align-items: center;
     width: 100%;
-}
-
-.topics-title h1 {
     margin: 0;
-    padding: 0;
-    color: #28ad3c;
-    font-family: "Pixelify Sans", monospace;
-    font-size: clamp(42px, 4.5vw, 60px);
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap;
+    padding: 0 6%;
 }
 
-.topics-line {
-    flex: 1;
-    height: 35px;
-    margin-left: 14px;
-    background: linear-gradient(
-        to right,
-        #28ad3c 0%,
-        rgba(40, 173, 60, 0.65) 35%,
-        rgba(40, 173, 60, 0.2) 70%,
-        transparent 100%
-    );
+.topics-intro h1 {
+    margin: 0 0 25px;
+    padding: 0;
+    color: #0b362a;
+    font-size: 45px;
+    font-weight: 750;
+    line-height: 1.3;
 }
+
+/* Description from the reference screenshot */
 
 .topics-description {
     max-width: 100%;
-    margin: 24px 0 0;
-    color: #28ad3c;
-    font-size: clamp(14px, 1.25vw, 18px);
-    line-height: 1.25;
+    margin: 0;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: justify;
 }
+
+/* Language label and Python badge */
 
 .language-label {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-top: 42px;
-    color: #92fd92;
+    flex-wrap: wrap;
+    gap: 23px;
+    margin-top: 30px;
+}
+
+.language-text {
+    color: #000000;
     font-size: 20px;
+    font-weight: 700;
 }
 
 .language-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 70px;
-    padding: 5px 15px;
-    border: 1px solid #20b83a;
-    border-radius: 20px;
-    color: #92fd92;
-    font-size: 13px;
+    min-width: 90px;
+    min-height: 38px;
+    padding: 5px 18px;
+    border: 2px solid #ffc928;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0077b6;
+    font-size: 15px;
+    font-weight: 700;
     line-height: 1.2;
 }
+
+/* =========================
+   TOPIC SELECTOR AND PANELS
+========================= */
 
 .topic-content {
     display: grid;
     grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.2fr);
     align-items: start;
     gap: 28px;
-    width: min(1400px, 100%);
-    margin: 55px auto 0;
+    width: 88%;
+    max-width: 1400px;
+    margin: 70px auto 0;
 }
 
 .topic-selector {
@@ -281,46 +243,65 @@ main {
     min-width: 0;
 }
 
+/* Smooth topic button transitions */
 .topic-button {
     display: flex;
     align-items: center;
     gap: 20px;
     width: 100%;
-    min-height: 46px;
+    min-height: 60px;
     padding: 10px 18px;
     border: 0;
-    border-radius: 13px;
-    background: #395a38;
-    color: #001b05;
-    font-family: "Pixelify Sans", monospace;
-    font-size: clamp(16px, 1.4vw, 21px);
+    border-radius: 20px;
+    background: #c3ffb4;
+    color: #011400;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
     line-height: 1.2;
     text-align: left;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.3s ease;
 }
 
-.topic-button span:first-child {
-    flex: 0 0 16px;
-}
-
-.topic-button span:last-child {
-    min-width: 0;
-}
-
+/* Hover animation */
 .topic-button:hover {
-    background: #598653;
+    background: #81c67b;
+    box-shadow: 0 5px 12px rgba(11, 54, 42, 0.12);
 }
 
+/* Click animation */
+.topic-button:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: none;
+}
+
+/* Selected topic */
 .topic-button.active {
-    background: #80c47b;
-    color: #001b05;
+    background: #81c67b;
+    color: #011400;
+    box-shadow: 0 3px 10px rgba(11, 54, 42, 0.1);
 }
 
+/* Smooth keyboard focus */
 .topic-button:focus-visible {
     outline: 2px solid #28ad3c;
-    outline-offset: 3px;
+    outline-offset: 4px;
 }
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .topic-button {
+        transition: none;
+    }
+}
+
+/* Topic description and code panels */
 
 .topic-panels {
     display: flex;
@@ -331,35 +312,45 @@ main {
 
 .description-panel {
     min-height: 150px;
-    padding: 22px 26px;
-    border-radius: 28px;
-    background: #0B2E10;
-    color: #93fd9a;
+    padding: 24px 26px;
+    border: 1px solid #dce8df;
+    border-radius: 20px;
+    background: #c3ffb4;
+    color: #0b362a;
 }
 
 .description-panel h2 {
-    margin: 0 0 24px;
-    color: #93fd9a;
-    font-size: clamp(18px, 1.7vw, 24px);
-    font-weight: 700;
-    line-height: 1.1;
+    margin: 0 0 20px;
+    color: #011400;
+    font-size: 22px;
+    font-weight: 750;
+    line-height: 1.2;
 }
 
 .description-panel p {
-    margin: 0;
-    color: #93fd9a;
-    font-size: clamp(13px, 1.15vw, 17px);
-    line-height: 1.08;
+    margin: -4px 0 0;
+    color: #011400;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
     overflow-wrap: anywhere;
 }
 
 .code-panel {
-    min-height: 72px;
-    padding: 18px 26px;
-    border-radius: 26px;
-    background: #001400;
+    min-height: 100px;
+    padding: 20px 26px;
+    border-radius: 20px;
+    background: #011400;
     color: #93fd9a;
     overflow-x: auto;
+}
+
+.code-panel-heading {
+    margin-bottom: 12px;
+    color: #28ad3c;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
 }
 
 .code-panel pre {
@@ -370,11 +361,16 @@ main {
 
 .code-panel code {
     color: #93fd9a;
-    font-family: "Pixelify Sans", monospace;
-    font-size: clamp(12px, 1vw, 15px);
-    line-height: 1.2;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.6;
     tab-size: 4;
 }
+
+/* =========================
+   FOOTER
+   Matches about.css
+========================= */
 
 .site-footer {
     position: relative;
@@ -383,8 +379,9 @@ main {
     padding: 35px clamp(25px, 5vw, 70px) 18px;
     background: #011400;
     color: #74b553;
-    font-family: "Pixelify Sans", monospace;
+    font-family: "Inter", sans-serif;
     font-size: 13px;
+    font-weight: 400;
     text-align: left;
 }
 
@@ -415,14 +412,14 @@ main {
     width: 170px;
     max-width: 100%;
     height: auto;
-    image-rendering: pixelated;
 }
 
 .footer-tagline {
     margin-left: 5px;
-    color: #74b553;
+    color: #93fd9a;
     font-size: 12px;
     line-height: 1.5;
+    font-weight: 200;
 }
 
 .footer-links,
@@ -431,17 +428,17 @@ main {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    margin: 0;
     width: 100px;
+    margin: 0;
 }
 
 .footer-links h3,
 .footer-contact h3 {
     margin: 0 0 5px;
     color: #93fd9a;
-    font-family: "Pixelify Sans", monospace;
+    font-family: "Inter", sans-serif;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .footer-links a,
@@ -449,6 +446,7 @@ main {
     color: #93fd9a;
     font-size: 12px;
     text-decoration: none;
+    font-weight: 350;
     transition: color 0.2s ease;
 }
 
@@ -460,10 +458,10 @@ main {
 .footer-divider {
     width: 100%;
     max-width: 1400px;
-    height: 1px;
+    height: 3px;
     margin: 0 auto;
-    opacity: 0.1;
     background: #27aa3b;
+    opacity: 0.1;
 }
 
 .footer-bottom {
@@ -478,6 +476,7 @@ main {
     color: #93fd9a;
     font-size: 10px;
     text-align: center;
+    font-weight: 200;
 }
 
 .footer-game-logo {
@@ -486,25 +485,27 @@ main {
     height: auto;
     margin: 0 auto 2px;
     object-fit: contain;
-    image-rendering: pixelated;
 }
 
 .footer-bottom p {
     margin: 0;
 }
 
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 1000px) {
     .nav-links {
-        gap: clamp(15px, 2.5vw, 30px);
-        margin-left: clamp(20px, 3vw, 50px);
+        gap: 25px;
     }
 
     .play-btn {
-        padding: 11px 22px;
+        margin-left: 28px;
     }
 
     .topic-content {
-        grid-template-columns: minmax(200px, 0.7fr) minmax(0, 1.3fr);
+        grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.3fr);
         gap: 22px;
     }
 
@@ -513,102 +514,90 @@ main {
     }
 
     .code-panel {
-        padding: 17px 22px;
+        padding: 18px 22px;
     }
 }
 
-@media (max-width: 750px) {
-    .site-header,
-    .top-nav {
-        height: 70px;
-    }
+/* =========================
+   SMALLER SCREENS
+========================= */
 
+@media (max-width: 700px) {
     .nav-container {
-        width: calc(100% - 30px);
+        width: calc(100% - 28px);
     }
 
     .logo img {
-        width: 75px;
+        width: 54px;
     }
 
     .nav-links {
-        margin-left: 20px;
-        gap: 18px;
-        overflow: hidden;
+        gap: 14px;
     }
 
-    .nav-links a {
-        font-size: 11px;
+    .nav-links>a {
+        font-size: 10px;
     }
 
     .play-btn {
-        padding: 10px 17px;
-        font-size: 11px;
+        margin-left: 15px;
+        padding: 9px 13px;
+        font-size: 10px;
     }
 
-    .topics-section {
-        padding: 115px 25px 75px;
+    .topics-intro {
+        padding: 0 5%;
     }
 
-    .topics-title h1 {
-        font-size: clamp(32px, 7vw, 50px);
-    }
-
-    .topics-line {
-        height: 24px;
-        margin-left: 12px;
+    .topics-intro h1 {
+        font-size: 38px;
     }
 
     .topics-description {
-        margin-top: 20px;
-        font-size: 14px;
-        line-height: 1.3;
+        font-size: 12px;
+        line-height: 1.45;
     }
 
     .language-label {
-        margin-top: 30px;
+        margin-top: 22px;
     }
 
     .topic-content {
-        grid-template-columns: minmax(150px, 0.7fr) minmax(0, 1.3fr);
+        width: 90%;
+        grid-template-columns: minmax(160px, 0.7fr) minmax(0, 1.3fr);
         gap: 16px;
-        margin-top: 38px;
+        margin-top: 40px;
     }
 
     .topic-selector {
-        gap: 12px;
+        gap: 10px;
     }
 
     .topic-button {
         min-height: 44px;
         gap: 10px;
         padding: 10px 12px;
-        font-size: 16px;
-    }
-
-    .topic-button span:first-child {
-        flex-basis: 15px;
+        font-size: 14px;
     }
 
     .description-panel {
         min-height: 145px;
         padding: 20px;
-        border-radius: 23px;
+        border-radius: 18px;
     }
 
     .description-panel h2 {
-        margin-bottom: 20px;
-        font-size: 19px;
+        margin-bottom: 16px;
+        font-size: 16px;
     }
 
     .description-panel p {
-        font-size: 13px;
-        line-height: 1.15;
+        font-size: 12px;
     }
 
     .code-panel {
         padding: 16px 20px;
-        border-radius: 22px;
+        border-radius: 16px;
     }
 
     .code-panel code {
@@ -616,25 +605,19 @@ main {
     }
 
     .footer-main {
-        grid-template-columns: minmax(0, 1fr) 100px 100px;
-        column-gap: 25px;
-    }
-
-    .footer-links,
-    .footer-contact {
-        width: 100px;
-        margin: 0;
-    }
-
-    .footer-bottom {
-        align-items: center;
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
+        column-gap: 20px;
     }
 }
 
-@media (max-width: 600px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+    .top-nav {
+        --nav-height: 54px;
+    }
+
     .nav-links {
         display: none;
     }
@@ -643,34 +626,46 @@ main {
         margin-left: auto;
     }
 
-    .topics-section {
-        padding: 105px 22px 60px;
+    .topics-content {
+        margin-top: 54px;
+        padding: 75px 0 50px;
     }
 
-    .topics-title h1 {
-        font-size: 34px;
+    .topics-intro {
+        padding: 0 20px;
     }
 
-    .topics-line {
-        height: 18px;
-        margin-left: 10px;
+    .topics-intro h1 {
+        margin-bottom: 20px;
+        font-size: 30px;
     }
 
     .topics-description {
-        margin-top: 18px;
-        font-size: 13px;
+        font-size: 12px;
+        line-height: 1.5;
+        text-align: left;
     }
 
     .language-label {
-        gap: 12px;
-        margin-top: 25px;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .language-text {
         font-size: 13px;
     }
 
+    .language-badge {
+        min-width: 76px;
+        min-height: 28px;
+        font-size: 10px;
+    }
+
     .topic-content {
+        width: calc(100% - 40px);
         grid-template-columns: 1fr;
-        gap: 24px;
-        margin-top: 32px;
+        gap: 22px;
+        margin-top: 35px;
     }
 
     .topic-selector {
@@ -683,8 +678,8 @@ main {
         min-height: 44px;
         gap: 8px;
         padding: 10px 12px;
-        border-radius: 12px;
-        font-size: 15px;
+        border-radius: 10px;
+        font-size: 13px;
     }
 
     .topic-button span:first-child {
@@ -698,56 +693,49 @@ main {
     .description-panel {
         min-height: 145px;
         padding: 22px;
-        border-radius: 24px;
+        border-radius: 18px;
     }
 
     .description-panel h2 {
-        margin-bottom: 22px;
-        font-size: 20px;
+        margin-bottom: 18px;
+        font-size: 17px;
     }
 
     .description-panel p {
-        font-size: 14px;
-        line-height: 1.15;
+        font-size: 13px;
+        line-height: 1.5;
     }
 
     .code-panel {
-        min-height: 72px;
-        padding: 18px 22px;
-        border-radius: 22px;
+        min-height: 85px;
+        padding: 18px 20px;
+        border-radius: 16px;
     }
 
     .code-panel code {
-        font-size: 13px;
+        font-size: 12px;
     }
 
-    .footer-main {
-        grid-template-columns: minmax(0, 1fr) 100px 100px;
-        column-gap: 15px;
-    }
-
-    .footer-links,
-    .footer-contact {
-        width: 100px;
-        margin: 0;
-    }
-
-    .footer-bottom {
-        align-items: center;
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
     .site-footer {
-        padding: 30px 22px 18px;
+        padding: 30px 20px 18px;
     }
 
     .footer-main {
         grid-template-columns: minmax(0, 1fr) 90px 90px;
-        column-gap: 10px;
+        column-gap: 12px;
+    }
+
+    .footer-logo {
+        margin-left: -12px;
+    }
+
+    .footer-logo img {
+        width: 115px;
+    }
+
+    .footer-tagline {
+        margin-left: 0;
+        font-size: 10px;
     }
 
     .footer-links,
@@ -755,17 +743,18 @@ main {
         width: 90px;
     }
 
-    .footer-logo img {
-        width: 110px;
-    }
-
     .footer-links h3,
-    .footer-contact h3 {
+    .footer-contact h3,
+    .footer-links a,
+    .footer-contact a {
         font-size: 10px;
     }
 
-    .footer-links a,
-    .footer-contact a {
-        font-size: 9px;
+    .footer-game-logo {
+        width: 115px;
+    }
+
+    .footer-bottom p {
+        line-height: 1.6;
     }
 }
