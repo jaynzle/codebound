@@ -26,7 +26,10 @@ body {
     font-weight: 400;
 }
 
-/* Hero background */
+/* =========================================
+   HERO BACKGROUND
+   ========================================= */
+
 .hero-background {
     position: relative;
     width: 100%;
@@ -35,7 +38,10 @@ body {
     background: url("../images/codebound-bg.png") center / cover no-repeat;
 }
 
-/* Navigation */
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
 .site-header {
     position: fixed;
     top: 0;
@@ -84,7 +90,7 @@ body {
     margin-left: auto;
 }
 
-.nav-links>a {
+.nav-links > a {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -98,8 +104,9 @@ body {
     transition: color 0.25s ease;
 }
 
-/* Animated underline */
-.nav-links>a::before {
+/* Animated navigation underline */
+
+.nav-links > a::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -111,19 +118,21 @@ body {
     transition: all 0.25s ease-in-out;
 }
 
-.nav-links>a:hover::before {
+.nav-links > a:hover::before {
     width: 100%;
     border-radius: 50%;
 }
 
-.nav-links>a.active::before {
+.nav-links > a.active::before {
     width: 100%;
     border-radius: 50%;
 }
 
-.nav-links>a.active {
+.nav-links > a.active {
     color: #34d445;
 }
+
+/* Navbar Play Game button */
 
 .play-btn {
     position: relative;
@@ -141,7 +150,6 @@ body {
     transition: transform 0.25s ease;
 }
 
-/* Button background opacity */
 .play-btn::before {
     content: "";
     position: absolute;
@@ -156,7 +164,10 @@ body {
     transform: scale(1.02);
 }
 
-/* Hero content */
+/* =========================================
+   HERO CONTENT
+   ========================================= */
+
 .hero-content {
     position: absolute;
     left: clamp(35px, 6%, 90px);
@@ -207,7 +218,7 @@ body {
     transform: translateY(-15px);
 }
 
-.hero-genres>span:first-child {
+.hero-genres > span:first-child {
     color: #ffffff;
 }
 
@@ -221,7 +232,8 @@ body {
     font-size: 12px;
 }
 
-/* Hero play button */
+/* Hero Play Game button */
+
 .hero-play-btn {
     --btn-opacity: 0.65;
 
@@ -261,7 +273,10 @@ body {
     transform: translateY(-30px) scale(1.02);
 }
 
-/* Trailer section */
+/* =========================================
+   TRAILER SECTION
+   ========================================= */
+
 .page-content {
     position: relative;
     z-index: 1;
@@ -299,7 +314,10 @@ body {
     border: none;
 }
 
-/* Quote section */
+/* =========================================
+   QUOTE SECTION
+   ========================================= */
+
 .quote-section {
     position: relative;
     width: 100vw;
@@ -336,7 +354,10 @@ body {
     object-fit: contain;
 }
 
-/* Evaluation form */
+/* =========================================
+   EVALUATION FORM
+   ========================================= */
+
 .evaluation-section {
     margin-top: 100px;
     width: 100%;
@@ -376,6 +397,7 @@ body {
 }
 
 /* Evaluation button */
+
 .evaluation-form-btn {
     width: 355px;
     min-height: 104px;
@@ -401,6 +423,8 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* Evaluation form on smaller screens */
+
 @media (max-width: 600px) {
     .evaluation-section {
         padding: 50px 20px;
@@ -422,6 +446,10 @@ body {
         font-size: 17px;
     }
 }
+
+/* =========================================
+   RESPONSIVE QUOTE SECTION
+   ========================================= */
 
 @media (max-width: 700px) {
     .quote-section {
@@ -455,7 +483,10 @@ body {
     }
 }
 
-/* Footer */
+/* =========================================
+   FOOTER
+   ========================================= */
+
 .site-footer {
     position: relative;
     z-index: 2;
@@ -575,7 +606,10 @@ body {
     margin: 0;
 }
 
-/* Responsive navigation and hero */
+/* =========================================
+   RESPONSIVE NAVIGATION AND HERO
+   ========================================= */
+
 @media (max-width: 700px) {
     .nav-container {
         width: calc(100% - 28px);
@@ -589,7 +623,7 @@ body {
         gap: 14px;
     }
 
-    .nav-links>a {
+    .nav-links > a {
         font-size: 10px;
     }
 
@@ -626,7 +660,10 @@ body {
     }
 }
 
-/* Responsive footer */
+/* =========================================
+   RESPONSIVE FOOTER
+   ========================================= */
+
 @media (max-width: 600px) {
     .footer-main {
         grid-template-columns: minmax(0, 1fr) 100px 100px;
@@ -656,7 +693,10 @@ body {
     }
 }
 
-/* Small screens */
+/* =========================================
+   SMALL SCREENS
+   ========================================= */
+
 @media (max-width: 520px) {
     .top-nav {
         --nav-height: 54px;
@@ -744,5 +784,233 @@ body {
 
     .footer-game-logo {
         width: 115px;
+    }
+}
+
+/* =========================================
+   LARGE-SCREEN NAVIGATION SCALING
+   Keeps existing sizing on regular screens.
+   ========================================= */
+
+@media (min-width: 1600px) {
+    .nav-container {
+        width: calc(100% - 100px);
+        max-width: 1800px;
+    }
+
+    .top-nav {
+        --nav-height: 78px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        gap: clamp(50px, 3.2vw, 68px);
+    }
+
+    .nav-links > a {
+        font-size: 18px;
+    }
+
+    .play-btn {
+        margin-left: clamp(49px, 3.2vw, 68px);
+        padding: 12px 27px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .nav-container {
+        max-width: 2000px;
+    }
+
+    .top-nav {
+        --nav-height: 84px;
+    }
+
+    .logo img {
+        width: 155px;
+    }
+
+    .nav-links > a {
+        font-size: 19px;
+    }
+
+    .play-btn {
+        padding: 13px 30px;
+        font-size: 19px;
+    }
+}
+
+/* =========================================
+   LARGE-SCREEN HERO AND PAGE SCALING
+   Preserves regular-screen layout and scales it up
+   on wider displays.
+   ========================================= */
+
+@media (min-width: 1600px) {
+    .hero-background {
+        min-height: 600px;
+        background-position: center center;
+    }
+
+    .hero-content {
+        left: 6%;
+        bottom: clamp(55px, 6.8vh, 90px);
+        width: min(65%, 900px);
+        max-width: 900px;
+    }
+
+    .hero-content h1 {
+        margin-bottom: -55px;
+        font-size: clamp(66px, 4.1vw, 78px);
+    }
+
+    .hero-content h2 {
+        margin-top: 112px;
+        font-size: clamp(22px, 1.35vw, 26px);
+    }
+
+    .hero-description {
+        font-size: clamp(19px, 1.12vw, 22px);
+        line-height: 1.5;
+    }
+
+    .hero-genres {
+        gap: clamp(10px, 0.75vw, 14px);
+        font-size: clamp(16px, 0.95vw, 19px);
+    }
+
+    .genre-tag {
+        padding: 4px 12px;
+        font-size: clamp(13px, 0.78vw, 16px);
+    }
+
+    .hero-play-btn {
+        min-width: 205px;
+        padding: 25px 40px;
+        font-size: clamp(20px, 1.15vw, 23px);
+    }
+
+    /* Main page sections scale with available width. */
+
+    .page-content {
+        padding-right: 7%;
+        padding-left: 7%;
+        font-size: 20px;
+    }
+
+    .page-content h1 {
+        font-size: clamp(34px, 2.2vw, 42px);
+    }
+
+    .trailer-container {
+        max-width: min(75vw, 1250px);
+    }
+
+    .quote-section {
+        min-height: clamp(320px, 24vw, 420px);
+        padding: 45px clamp(100px, 8vw, 170px);
+    }
+
+    .quote-text {
+        max-width: 1100px;
+        font-size: clamp(32px, 2vw, 40px);
+    }
+
+    .quote-cat {
+        width: clamp(180px, 12vw, 230px);
+    }
+
+    .evaluation-form-card {
+        max-width: 950px;
+        min-height: 500px;
+        padding: 50px 35px;
+    }
+
+    .evaluation-form-card h2 {
+        font-size: clamp(36px, 2.2vw, 44px);
+    }
+
+    .evaluation-form-btn {
+        width: clamp(355px, 25vw, 430px);
+        min-height: 115px;
+        font-size: clamp(26px, 1.5vw, 30px);
+    }
+}
+
+/* Further scaling for very large screens */
+
+@media (min-width: 2000px) {
+    .hero-content {
+        left: 6%;
+        bottom: 8%;
+        max-width: 1100px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(82px, 3.9vw, 100px);
+    }
+
+    .hero-content h2 {
+        margin-top: 135px;
+        font-size: 32px;
+    }
+
+    .hero-description {
+        font-size: 27px;
+    }
+
+    .hero-genres {
+        font-size: 22px;
+    }
+
+    .genre-tag {
+        padding: 6px 15px;
+        font-size: 18px;
+    }
+
+    .hero-play-btn {
+        min-width: 240px;
+        padding: 30px 48px;
+        font-size: 27px;
+    }
+
+    .page-content {
+        font-size: 22px;
+    }
+
+    .trailer-container {
+        max-width: min(75vw, 1500px);
+    }
+
+    .quote-section {
+        min-height: 440px;
+    }
+
+    .quote-text {
+        max-width: 1300px;
+        font-size: 44px;
+    }
+
+    .quote-cat {
+        width: 250px;
+    }
+
+    .evaluation-form-card {
+        max-width: 1100px;
+        min-height: 560px;
+    }
+
+    .evaluation-form-card h2 {
+        font-size: 48px;
+    }
+
+    .evaluation-form-btn {
+        width: 460px;
+        min-height: 130px;
+        font-size: 32px;
     }
 }

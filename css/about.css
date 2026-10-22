@@ -75,7 +75,7 @@ body {
     margin-left: auto;
 }
 
-.nav-links>a {
+.nav-links > a {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -89,7 +89,7 @@ body {
     transition: color 0.25s ease;
 }
 
-.nav-links>a::before {
+.nav-links > a::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -100,18 +100,18 @@ body {
     transition: all 0.25s ease-in-out;
 }
 
-.nav-links>a:hover::before {
+.nav-links > a:hover::before {
     width: 100%;
     border-radius: 50%;
 }
 
 /* Active navigation link */
-.nav-links>a.active::before {
+.nav-links > a.active::before {
     width: 100%;
     border-radius: 50%;
 }
 
-.nav-links>a.active {
+.nav-links > a.active {
     color: #34d445;
 }
 
@@ -327,7 +327,6 @@ body {
     }
 }
 
-
 /* Footer */
 .site-footer {
     position: relative;
@@ -462,7 +461,7 @@ body {
         gap: 14px;
     }
 
-    .nav-links>a {
+    .nav-links > a {
         font-size: 10px;
     }
 
@@ -569,3 +568,222 @@ body {
         width: 115px;
     }
 }
+
+/* =========================================
+   LARGE-SCREEN SCALING
+   Preserves the original About page layout.
+   Only scales content on wider displays.
+   ========================================= */
+
+@media (min-width: 1600px) {
+    .top-nav {
+        --nav-height: 78px;
+    }
+
+    .nav-container {
+        width: calc(100% - 100px);
+        max-width: 1800px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        gap: clamp(50px, 3.2vw, 68px);
+    }
+
+    .nav-links > a {
+        font-size: 18px;
+    }
+
+    .play-btn {
+        margin-left: clamp(49px, 3.2vw, 68px);
+        padding: 12px 27px;
+        font-size: 18px;
+    }
+
+    .about-content {
+        padding: clamp(85px, 5vw, 110px) 6% clamp(70px, 4vw, 90px);
+    }
+
+    .about-content h1 {
+        margin-bottom: clamp(28px, 1.8vw, 38px);
+        font-size: clamp(52px, 2.8vw, 66px);
+    }
+
+    .about-content p {
+        margin-bottom: clamp(18px, 1.2vw, 25px);
+        font-size: clamp(20px, 1.15vw, 25px);
+        line-height: 1.45;
+    }
+
+    .about-carousel {
+        --carousel-height: clamp(420px, 26vw, 540px);
+        margin-top: clamp(160px, 9vw, 200px);
+    }
+
+    .about-carousel-track img {
+        flex-basis: 25vw;
+        width: 25vw;
+    }
+
+    .developers-section {
+        margin-top: clamp(100px, 6vw, 130px);
+        padding: clamp(60px, 4vw, 85px) 3% clamp(80px, 5vw, 110px);
+    }
+
+    .developers-section h2 {
+        margin-bottom: clamp(38px, 2.4vw, 55px);
+        font-size: clamp(48px, 2.7vw, 64px);
+    }
+
+    .developers-container {
+        gap: clamp(50px, 3vw, 75px);
+        margin-top: clamp(85px, 5vw, 115px);
+    }
+
+    .developer-card {
+        width: clamp(300px, 19vw, 370px);
+    }
+
+    .developer-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .developer-card h3 {
+        margin-top: clamp(42px, 2.5vw, 55px);
+        font-size: clamp(29px, 1.7vw, 36px);
+    }
+
+    .developer-card p {
+        font-size: clamp(15px, 0.95vw, 19px);
+        line-height: 1.5;
+    }
+
+    .site-footer {
+        padding: clamp(40px, 2.5vw, 55px) clamp(45px, 5vw, 100px) 24px;
+        font-size: clamp(14px, 0.85vw, 17px);
+    }
+
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr) clamp(120px, 8vw, 160px) clamp(120px, 8vw, 160px);
+        column-gap: clamp(55px, 4vw, 90px);
+        max-width: 1800px;
+        padding-bottom: clamp(35px, 2.3vw, 50px);
+    }
+
+    .footer-logo img {
+        width: clamp(180px, 11vw, 230px);
+    }
+
+    .footer-tagline {
+        font-size: clamp(13px, 0.8vw, 16px);
+    }
+
+    .footer-links,
+    .footer-contact {
+        width: auto;
+        min-width: 120px;
+        gap: 6px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: clamp(15px, 0.9vw, 18px);
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        font-size: clamp(13px, 0.8vw, 16px);
+    }
+
+    .footer-divider {
+        max-width: 1800px;
+    }
+
+    .footer-bottom {
+        max-width: 1800px;
+        padding-top: clamp(30px, 2vw, 42px);
+        font-size: clamp(11px, 0.7vw, 14px);
+        gap: 10px;
+    }
+
+    .footer-game-logo {
+        width: clamp(140px, 8.5vw, 175px);
+    }
+}
+
+@media (min-width: 2000px) {
+    .nav-container {
+        max-width: 2000px;
+    }
+
+    .top-nav {
+        --nav-height: 84px;
+    }
+
+    .logo img {
+        width: 155px;
+    }
+
+    .nav-links > a {
+        font-size: 19px;
+    }
+
+    .play-btn {
+        padding: 13px 30px;
+        font-size: 19px;
+    }
+
+    .about-content {
+        padding-top: 115px;
+        padding-bottom: 100px;
+    }
+
+    .about-content h1 {
+        font-size: 70px;
+    }
+
+    .about-content p {
+        font-size: 27px;
+    }
+
+    .about-carousel {
+        --carousel-height: 580px;
+        margin-top: 220px;
+    }
+
+    .developers-section h2 {
+        font-size: 68px;
+    }
+
+    .developers-container {
+        gap: 80px;
+    }
+
+    .developer-card {
+        width: 390px;
+    }
+
+    .developer-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .developer-card h3 {
+        font-size: 38px;
+    }
+
+    .developer-card p {
+        font-size: 20px;
+    }
+
+    .footer-main,
+    .footer-divider,
+    .footer-bottom {
+        max-width: 2100px;
+    }
+}   

@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -630,9 +631,297 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     .features-track,
     .feature-card {
         transition-duration: 0.01ms;
+    }
+}
+
+/* Large-screen scaling */
+@media (min-width: 1600px) {
+    .top-nav {
+        --nav-height: 78px;
+    }
+
+    .nav-container {
+        width: min(calc(100% - 100px), 1800px);
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        gap: clamp(50px, 3.2vw, 70px);
+    }
+
+    .nav-links>a {
+        font-size: 18px;
+    }
+
+    .play-btn {
+        margin-left: 55px;
+        padding: 12px 27px;
+        font-size: 18px;
+    }
+
+    .features-content {
+        margin-top: 78px;
+        padding: clamp(85px, 5vw, 110px) 0 75px;
+    }
+
+    .features-heading {
+        margin-bottom: 42px;
+        padding: 0 6%;
+        font-size: clamp(52px, 3.2vw, 64px);
+    }
+
+    .features-section {
+        --card-width: clamp(600px, 36vw, 700px);
+        --card-height: clamp(580px, 35vw, 660px);
+        --card-gap: 22px;
+        min-height: clamp(780px, 46vw, 900px);
+    }
+
+    .features-viewport {
+        height: clamp(660px, 39vw, 760px);
+    }
+
+    .features-track {
+        padding: 30px 0;
+    }
+
+    .feature-card {
+        padding: 32px 34px 36px;
+        border-radius: 32px;
+    }
+
+    .feature-card img {
+        flex-basis: clamp(260px, 16vw, 300px);
+        height: clamp(260px, 16vw, 300px);
+        min-height: clamp(260px, 16vw, 300px);
+        max-height: clamp(260px, 16vw, 300px);
+        margin-bottom: 26px;
+        border-radius: 22px;
+    }
+
+    .feature-card h2 {
+        min-height: 60px;
+        margin-bottom: 20px;
+        padding: 14px 20px;
+        font-size: clamp(24px, 1.5vw, 29px);
+    }
+
+    .feature-card p {
+        padding: 26px 30px;
+        font-size: clamp(19px, 1.2vw, 23px);
+        line-height: 1.65;
+    }
+
+    .features-indicators {
+        gap: 7px;
+        margin-top: 28px;
+    }
+
+    .feature-indicator {
+        flex-basis: 10px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .feature-indicator.active {
+        flex-basis: 90px;
+        width: 90px;
+        height: 12px;
+    }
+
+    .site-footer {
+        padding: 42px clamp(40px, 5vw, 90px) 22px;
+        font-size: 15px;
+    }
+
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr) 130px 130px;
+        column-gap: clamp(50px, 4vw, 80px);
+        width: min(100%, 1800px);
+        padding-bottom: 38px;
+    }
+
+    .footer-logo img {
+        width: 200px;
+    }
+
+    .footer-tagline {
+        font-size: 14px;
+    }
+
+    .footer-links,
+    .footer-contact {
+        width: 130px;
+        gap: 6px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: 17px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        font-size: 14px;
+    }
+
+    .footer-divider {
+        max-width: 1800px;
+    }
+
+    .footer-bottom {
+        width: min(100%, 1800px);
+        gap: 10px;
+        padding-top: 34px;
+        font-size: 12px;
+    }
+
+    .footer-game-logo {
+        width: 155px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .top-nav {
+        --nav-height: 84px;
+    }
+
+    .nav-container {
+        width: min(calc(100% - 140px), 2100px);
+    }
+
+    .logo img {
+        width: 155px;
+    }
+
+    .nav-links {
+        gap: 75px;
+    }
+
+    .nav-links>a {
+        font-size: 20px;
+    }
+
+    .play-btn {
+        margin-left: 65px;
+        padding: 14px 32px;
+        font-size: 20px;
+    }
+
+    .features-content {
+        margin-top: 84px;
+        padding-top: 115px;
+    }
+
+    .features-heading {
+        margin-bottom: 50px;
+        font-size: 70px;
+    }
+
+    .features-section {
+        --card-width: 760px;
+        --card-height: 720px;
+        --card-gap: 26px;
+        min-height: 980px;
+    }
+
+    .features-viewport {
+        height: 820px;
+    }
+
+    .features-track {
+        padding: 35px 0;
+    }
+
+    .feature-card {
+        padding: 38px 40px 42px;
+        border-radius: 36px;
+    }
+
+    .feature-card img {
+        flex-basis: 330px;
+        height: 330px;
+        min-height: 330px;
+        max-height: 330px;
+        margin-bottom: 30px;
+        border-radius: 25px;
+    }
+
+    .feature-card h2 {
+        min-height: 68px;
+        margin-bottom: 23px;
+        padding: 16px 24px;
+        font-size: 32px;
+    }
+
+    .feature-card p {
+        padding: 30px 34px;
+        font-size: 25px;
+    }
+
+    .features-indicators {
+        margin-top: 34px;
+    }
+
+    .feature-indicator.active {
+        flex-basis: 100px;
+        width: 100px;
+        height: 13px;
+    }
+
+    .site-footer {
+        padding: 48px 100px 25px;
+        font-size: 16px;
+    }
+
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr) 150px 150px;
+        column-gap: 90px;
+        width: min(100%, 2100px);
+        padding-bottom: 44px;
+    }
+
+    .footer-logo img {
+        width: 220px;
+    }
+
+    .footer-tagline {
+        font-size: 15px;
+    }
+
+    .footer-links,
+    .footer-contact {
+        width: 150px;
+        gap: 7px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        font-size: 19px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        font-size: 15px;
+    }
+
+    .footer-divider {
+        max-width: 2100px;
+    }
+
+    .footer-bottom {
+        width: min(100%, 2100px);
+        padding-top: 38px;
+        font-size: 13px;
+    }
+
+    .footer-game-logo {
+        width: 170px;
     }
 }
