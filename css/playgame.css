@@ -45,7 +45,7 @@ body.playgame-page {
     height: 100dvh;
     overflow: hidden;
     pointer-events: none;
-    background: #000000;
+    background: #ffffff;
 }
 
 .page-background img {
